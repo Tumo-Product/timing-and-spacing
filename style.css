@@ -10,14 +10,18 @@ body {
 
 #canv {
     overflow: hidden;
-    width: 75%;
+    width: 100%;
     position: absolute;
 }
 
 #alt_canv {
     overflow: hidden;
-    width: 75%;
+    width: 100%;
     opacity: 0.25;
+}
+
+#selectBtn {
+    background-color: green;
 }
 
 ._wrong {
