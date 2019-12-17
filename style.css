@@ -1,0 +1,88 @@
+#mainbox {
+    background-image: url(assets/background.jpg);
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+#canv {
+    overflow: hidden;
+    width: 75%;
+    position: absolute;
+}
+
+#alt_canv {
+    overflow: hidden;
+    width: 75%;
+    opacity: 0.25;
+}
+
+._wrong {
+    background-color: #ff4200;
+}
+
+._right {
+    background-color: #00ff70;
+}
+
+._uiButton {
+    outline: auto;
+    background-color: coral;
+}
+
+._inactiveBtn {
+    opacity: 0.25;
+    cursor: default;
+}
+
+#playBtn {
+    width: 5%;
+    position: absolute;
+    top: 1%;
+    right: 1%;
+}
+
+#pauseBtn {
+    width: 5%;
+    position: absolute;
+    top: 1%;
+    right: 7%;
+}
+
+#nextBtn {
+    width: 5%;
+    position: absolute;
+    top : 1%;
+    right: 14%;
+}
+
+#prevBtn {
+    width: 5%;
+    position: absolute;
+    top: 1%;
+    right: 20%;
+}
+
+#selectBtn {
+    width: 5%;
+    position: absolute;
+    top: 1%;
+    left: 1%;
+}
+
+#importBtn {
+    width: 5%;
+    position: absolute;
+    top: 1%;
+    left: 8%;
+}
+
+#exportBtn {
+    width: 5%;
+    position: absolute;
+    top: 1%;
+    left: 14%;
+}

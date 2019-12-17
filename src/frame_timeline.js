@@ -1,0 +1,50 @@
+/**
+ * Created by admin on 12/9/2019.
+ */
+let timeline = {};
+
+let initializeTimeline = (cnt) => {
+    let container = document.getElementById("ticks1");
+    for(let i = 1; i <= cnt; i++){
+        container.innerHTML += generaeOption(i);
+    }
+    timeline = document.getElementById("timeline");
+    timeline.min = 1;
+    timeline.max = cnt;
+    timeline.value = 1;
+};
+
+let generaeOption = (id) => {
+    let retString = "";
+    retString = `<option value="${id}" id="op${id}"> ${id} </option>`;
+    return retString;
+};
+
+let setValue = (val) => {
+    timeline.value = val;
+};
+
+let changeValue = () => {
+    timeline = document.getElementById("timeline");
+    animFr = parseInt(timeline.value);
+    setAnimationState(false);
+    console.log(animFr);
+    UIManager.btnStateHelper();
+};
+
+//state -> "correct", "wrong", "clear"
+let setState = (id, state) => {
+    let opt = document.getElementById(`op${id}`);
+    switch (state){
+        case "correct":
+            opt.classList.add("_right");
+            break;
+        case "wrong":
+            opt.classList.add("_wrong");
+            break;
+        default:
+            opt.className = "";
+            break;
+    }
+};
+
