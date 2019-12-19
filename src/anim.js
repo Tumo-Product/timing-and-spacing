@@ -12,7 +12,6 @@ let maxFr = 0;
 let currentFrame    = [];
 let frameStack      = [];
 let showTrajectory  = true;
-
 window.onload = function () {
     canvas      = document.getElementById("canv");
     cont        = canvas.getContext('2d');
@@ -21,6 +20,7 @@ window.onload = function () {
     alt_cont    = alt_canvas.getContext('2d');
     alt_cont.imageSmoothingEnabled  = false;
     manager.LoadAnimation(SetupAnimation);
+    initializeDataManager();
 };
 
 function SetupAnimation() {

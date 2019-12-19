@@ -9,7 +9,7 @@ let UIManager = {
     exportButton    : {},
     importButton    : {},
     selectButton    : {},
-    correctFrames   : [1,8,13, 18, 22, 25, 27, 29],
+    correctFrames   : [1,8,13, 18, 22, 25, 27, 29, 54],
     selectedFrames  : [],
     frameCount      : 0,
     _lastState      : true,
@@ -93,7 +93,26 @@ let UIManager = {
             console.log(crrId, crrFrame);
             setState(crrId, crrFrame ? "correct" : "wrong");
         }
+    },
+    
+    clearUI : function () {
+        for(let i = 0; i < UIManager.selectedFrames.length; i++){
+            removeSavedFrame(UIManager.selectedFrames[i]);
+            setState(UIManager.selectedFrames[i], "clear");
+        }
+        UIManager.selectedFrames = [];
+    },
 
+    setSelect : function (id) {
+        UIManager.selectedFrames.push(id);
+        let crrFrame = false;
+        for(let i = 0; i < UIManager.correctFrames.length; i++){
+            if(UIManager.correctFrames[i] === id){
+                crrFrame = true;
+            }
+        }
+        addSavedFrame(id);
+        setState(id, crrFrame ? "correct" : "wrong");
     },
     
     btnStateHelper : function () {

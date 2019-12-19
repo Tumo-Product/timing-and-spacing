@@ -6,6 +6,8 @@
     <script src="src/resource_manager.js"></script>
     <script src="src/frame_timeline.js"></script>
     <script src="src/ui_manager.js"></script>
+    <script src="src/tools.js"></script>
+    <script src="src/data_manager.js"></script>
 </head>
 <body>
     <div id="mainbox">
@@ -13,16 +15,35 @@
         </canvas>
         <canvas id="alt_canv" width="1920" height="1080">
         </canvas>
-        <div class="__range __range-step">
-            <input value="3" type="range" max="5" min="1" step="1" list="ticks1" id="timeline" oninput="changeValue()">
-            <datalist id="ticks1">
-            </datalist>
+
+        <div class="row">
+            <div id="framerate" class="column">
+                <div style="text-align: -webkit-center; align-content: end; height: 100%;">
+                    <p id="crrFrame"> 25/48 </p>
+                </div>
+            </div>
+            <div class="column" id="range-container">
+                <div class="__range __range-step">
+                    <input value="3" type="range" max="5" min="1" step="1" list="ticks1" id="timeline" oninput="changeValue()">
+                    <datalist id="ticks1">
+                    </datalist>
+                </div>
+            </div>
+            <div class="column" id="button-container">
+                <div >
+                    <input type="image" src="./assets/ui/big_x.png"     alt="Submit" class="_uiButton" id="selectBtn">
+                </div>
+            </div>
         </div>
+
+
+
+
+
         <input type="image" src="./assets/ui/play.png"      alt="Submit" class="_uiButton _inactiveBtn" id="playBtn">
         <input type="image" src="./assets/ui/pause.png"     alt="Submit" class="_uiButton" id="pauseBtn">
         <input type="image" src="./assets/ui/next.png"      alt="Submit" class="_uiButton" id="nextBtn">
         <input type="image" src="./assets/ui/previous.png"  alt="Submit" class="_uiButton" id="prevBtn">
-        <input type="image" src="./assets/ui/big_x.png"     alt="Submit" class="_uiButton" id="selectBtn">
         <input type="image" src="./assets/ui/import.png"    alt="Submit" class="_uiButton" id="importBtn">
         <input type="image" src="./assets/ui/save.png"      alt="Submit" class="_uiButton" id="exportBtn">
     </div>

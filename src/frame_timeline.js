@@ -2,6 +2,7 @@
  * Created by admin on 12/9/2019.
  */
 let timeline = {};
+let frameRate = {};
 
 let initializeTimeline = (cnt) => {
     let container = document.getElementById("ticks1");
@@ -9,6 +10,7 @@ let initializeTimeline = (cnt) => {
         container.innerHTML += generaeOption(i);
     }
     timeline = document.getElementById("timeline");
+    frameRate = document.getElementById("crrFrame");
     timeline.min = 1;
     timeline.max = cnt;
     timeline.value = 1;
@@ -16,12 +18,13 @@ let initializeTimeline = (cnt) => {
 
 let generaeOption = (id) => {
     let retString = "";
-    retString = `<option value="${id}" id="op${id}"> ${id} </option>`;
+    retString = `<option value="${id}" id="op${id}">  </option>`;
     return retString;
 };
 
 let setValue = (val) => {
     timeline.value = val;
+    frameRate.innerHTML = timeline.value + "/" + timeline.max;
 };
 
 let changeValue = () => {
@@ -30,6 +33,7 @@ let changeValue = () => {
     setAnimationState(false);
     console.log(animFr);
     UIManager.btnStateHelper();
+    frameRate.innerHTML = timeline.value + "/" + timeline.max;
 };
 
 //state -> "correct", "wrong", "clear"
