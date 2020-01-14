@@ -1,5 +1,6 @@
 #mainbox {
-    background-image: url(assets/background.jpg);
+  /*  background-image: url(assets/background.jpg); */
+    background-color: #f3f3f3;
     height: 100%;
     width: 100%;
 }
@@ -71,9 +72,10 @@ body {
 }
 
 #selectBtn {
-    width: 80%;
-    top: 1%;
-    left: 1%;
+    width: 5%;
+    position: absolute;
+    top: 11%;
+    right: 1%;
 }
 
 #importBtn {
@@ -109,7 +111,7 @@ body {
 }
 
 #range-container {
-    width: 90%;
+    width: 100%;
     margin-top: 1%;
 }
 

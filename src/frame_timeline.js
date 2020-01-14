@@ -24,7 +24,6 @@ let generaeOption = (id) => {
 
 let setValue = (val) => {
     timeline.value = val;
-    frameRate.innerHTML = timeline.value + "/" + timeline.max;
 };
 
 let changeValue = () => {
@@ -33,7 +32,6 @@ let changeValue = () => {
     setAnimationState(false);
     console.log(animFr);
     UIManager.btnStateHelper();
-    frameRate.innerHTML = timeline.value + "/" + timeline.max;
 };
 
 //state -> "correct", "wrong", "clear"
