@@ -42,5 +42,8 @@ let exportBtnPressed = () => {
         exportString += i === selectedList.length - 1 ? "" : ":";
     }
     let exportKey = Base64.encode(exportString);
+    if(exportKey === ""){
+        exportKey = "Nothing To Export...";
+    }
     prompt("Please copy this key:", exportKey);
 };

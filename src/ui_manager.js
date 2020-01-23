@@ -20,6 +20,7 @@ let UIManager = {
         this.playButton     =   document.getElementById("playBtn");
         this.pauseButton    =   document.getElementById("pauseBtn");
         this.selectButton   =   document.getElementById("selectBtn");
+        this.deselectBtn    =   document.getElementById("deselectBtn");
         this.frameCount     =   res.frames.count;
         console.log(res, res.frames, res.frames.count);
         console.log(this.frameCount);
@@ -32,6 +33,7 @@ let UIManager = {
         this.playButton.onclick     = this.btnPlay;
         this.pauseButton.onclick    = this.btnPause;
         this.selectButton.onclick   = this.btnSelect;
+        this.deselectBtn.onclick    = this.btnSelect;
         console.log(this.frameCount);
     },
     
@@ -74,7 +76,6 @@ let UIManager = {
                 foundId = true;
             }
         }
-        console.log("FOUND ID", foundId, crrId);
         if(foundId){
             UIManager.selectedFrames = UIManager.selectedFrames.filter(e => e !== crrId);
             console.log(UIManager.selectedFrames);
@@ -84,15 +85,14 @@ let UIManager = {
             UIManager.selectedFrames.push(crrId);
             let crrFrame = false;
             for(let i = 0; i < UIManager.correctFrames.length; i++){
-                console.log(crrId, UIManager.correctFrames[i]);
                 if(UIManager.correctFrames[i] === crrId){
                     crrFrame = true;
                 }
             }
             addSavedFrame(crrId);
-            console.log(crrId, crrFrame);
             setState(crrId, crrFrame ? "correct" : "wrong");
         }
+        UIManager.btnStateHelper();
     },
     
     clearUI : function () {
@@ -124,8 +124,17 @@ let UIManager = {
         if(animFr === UIManager.frameCount){
             this.nextButton.classList.add("_inactiveBtn");
         }
+        if(UIManager.selectedFrames.includes(animFr)){
+            this.deselectBtn.style.display  = "block";
+            this.selectButton.style.display = "none";
+        } else {
+            this.selectButton.style.display = "block";
+            this.deselectBtn.style.display  = "none";
+        }
+
         if(animState === this._lastState)
             return;
+
         this._lastState = animState;
         if(animState){
             this.playButton.classList.add("_inactiveBtn");
@@ -134,6 +143,7 @@ let UIManager = {
             this.playButton.classList.remove("_inactiveBtn");
             this.pauseButton.classList.add("_inactiveBtn");
         }
+
     },
     
 

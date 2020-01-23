@@ -19,5 +19,6 @@ let res = {
     inactive_next   :   "/assets/ui/inactive_redo.png",
     inactive_prev   :   "/assets/ui/inactive_undo.png",
     small_cross     :   "/assets/ui/small_x.png",
-    big_cross       :   "assets/ui/big_x.png"
+    big_cross       :   "assets/ui/big_x.png",
+    cross           :   "assets/ui/cross.png"
 };

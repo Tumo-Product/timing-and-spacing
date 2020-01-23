@@ -78,6 +78,15 @@ body {
     right: 1%;
 }
 
+#deselectBtn {
+    display: none;
+    width: 5%;
+    position: absolute;
+    top: 11%;
+    right: 1%;
+    background-color: #ff383f;
+}
+
 #importBtn {
     width: 5%;
     position: absolute;

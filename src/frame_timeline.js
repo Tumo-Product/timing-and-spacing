@@ -7,7 +7,7 @@ let frameRate = {};
 let initializeTimeline = (cnt) => {
     let container = document.getElementById("ticks1");
     for(let i = 1; i <= cnt; i++){
-        container.innerHTML += generaeOption(i);
+        container.innerHTML += generateOption(i);
     }
     timeline = document.getElementById("timeline");
     frameRate = document.getElementById("crrFrame");
@@ -16,9 +16,14 @@ let initializeTimeline = (cnt) => {
     timeline.value = 1;
 };
 
-let generaeOption = (id) => {
+let generateOption = (id) => {
     let retString = "";
-    retString = `<option value="${id}" id="op${id}">  </option>`;
+    if(id % 10 === 0){
+        retString = `<option value="${id}" id="op${id}"> ${id} </option>`;
+    } else {
+        retString = `<option value="${id}" id="op${id}"> </option>`;
+    }
+
     return retString;
 };
 

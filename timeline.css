@@ -74,10 +74,11 @@
     height: 10px;
     min-height: 10px;
     border-radius: 100px;
-    /* hide text */
     white-space: nowrap;
-    padding:0;
+    padding: 0px 2px 0px 0px;
+    text-align: center;
     line-height: 40px;
+    font-size: larger;
 }
 
 
