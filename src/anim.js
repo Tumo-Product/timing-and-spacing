@@ -37,7 +37,7 @@ let loopSys = async () => {
     while(true){
         cont.clearRect(0, 0, canvas.width, canvas.height);
         initializeAndDrawFrames(animFr);
-        await delay(20);
+        await delay(37);
         if(animState) {
             animFr++;
             setValue(animFr);
