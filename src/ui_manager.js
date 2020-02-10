@@ -9,7 +9,7 @@ let UIManager = {
     exportButton    : {},
     importButton    : {},
     selectButton    : {},
-    correctFrames   : [1,8,13, 18, 22, 25, 27, 29, 54],
+    correctFrames   : [1,8,13, 18, 22, 25, 27, 29, 48],
     selectedFrames  : [],
     frameCount      : 0,
     _lastState      : true,

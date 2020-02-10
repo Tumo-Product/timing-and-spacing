@@ -6,7 +6,7 @@ let res = {
         path : "/assets/frames/",
         name : "final-00",
         format : ".png",
-        count : 54
+        count : 48
     },
     bottom_line : "/assets/f.png",
     anim_line   : "/assets/f1.png",
