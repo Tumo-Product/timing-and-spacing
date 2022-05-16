@@ -384,14 +384,14 @@ button {
 .scale_range {
   z-index: 8;
   background-image: url(/assets/newUI/scale.svg);
-  width: 790px;
+  width: 781px;
   height: 29px;
   background-repeat: no-repeat;
   background-position: top center;
   background-size: 98%;
   position: absolute;
   top: 71px;
-  left: 41px;
+  left: 40px;
 }
 
 .canvs {
@@ -448,8 +448,11 @@ button {
   width: 643px;
   background-size: 70%;
   border: 1.5px solid #000000;
+  border-right: none;
 }
 #closeInfoBtn {
+  background: url("/assets/newUI/cross.svg") no-repeat;
+  background-position: center;
   box-sizing: border-box;
   height: 26.5px;
   width: 26.5px;
@@ -475,4 +478,16 @@ button {
   list-style-image: url("/assets/newUI/dot.png");
   height: 30px;
   line-height: 30px;
+  color: #000000;
+  font-family: "Fedra Sans Alt Pro";
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.62px;
+  line-height: 21px;
+  margin-bottom: 20px;
+}
+
+#contentList li img {
+  height: 30px;
+  width: 30px;
 }

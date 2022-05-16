@@ -3,9 +3,9 @@
     "en": {
       "start": "Start",
       "info": [
-        "For  precise selection,the ball and move the frames and ",
-        "To mark the keyframe, click on the . If you make a mistake, just click on to remove it.",
-        "Once you’re done, click to copy your code."
+        "For  precise selection,<img src='assets/newUI/'> the ball and move the frames<img src='assets/newUI/'> and <img src='assets/newUI/'>",
+        "To mark the keyframe, click on the <img src='assets/newUI/'> . If you make a mistake, just click on <img src='assets/newUI/'>to remove it.",
+        "Once you’re done, click <img src='assets/newUI/'>to copy your code."
       ]
     }
   }

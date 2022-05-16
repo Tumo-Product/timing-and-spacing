@@ -23,7 +23,6 @@ let UIManager = {
     this.closeInfoBtn = document.getElementById("closeInfoBtn");
     this.initializeListeners();
   },
-
   initializeListeners: function () {
     this.nextButton.onclick = this.btnNext;
     this.previousButton.onclick = this.btnPrev;
@@ -34,30 +33,28 @@ let UIManager = {
     this.infoBtn.onclick = this.btnInfo;
     this.closeInfoBtn.onclick = this.btnCloseInfo;
   },
-
   btnNext: function () {
     if (animFr !== UIManager.frameCount) {
       setAnimationState(false);
       animFr++;
       setValue(animFr);
+      changeValue();
     }
     UIManager.btnStateHelper();
   },
-
   btnPrev: function () {
     if (animFr > 1) {
       setAnimationState(false);
       animFr--;
       setValue(animFr);
+      changeValue();
     }
     UIManager.btnStateHelper();
   },
-
   btnPlay: function () {
     setAnimationState(true);
     UIManager.btnStateHelper();
   },
-
   btnPause: function () {
     setAnimationState(false);
     UIManager.btnStateHelper();
@@ -97,7 +94,6 @@ let UIManager = {
     setState(crrId, crrFrame ? "correct" : "wrong");
     UIManager.btnStateHelper();
   },
-
   clearUI: function () {
     for (let i = 0; i < UIManager.selectedFrames.length; i++) {
       removeSavedFrame(UIManager.selectedFrames[i]);
@@ -105,7 +101,6 @@ let UIManager = {
     }
     UIManager.selectedFrames = [];
   },
-
   setSelect: function (id) {
     UIManager.selectedFrames.push(id);
     let crrFrame = false;
@@ -117,7 +112,6 @@ let UIManager = {
     addSavedFrame(id);
     setState(id, crrFrame ? "correct" : "wrong");
   },
-
   btnStateHelper: function () {
     this.nextButton.classList.remove("_inactiveBtn");
     this.previousButton.classList.remove("_inactiveBtn");
@@ -174,11 +168,8 @@ let UIManager = {
       el.insertAdjacentHTML("beforeend", row);
       list.appendChild(el);
     });
-
-    // .insertAdjacentHTML("beforeend", content);
   },
 };
-
 function checkTheAnswer(arr) {
   arr.sort((a, b) => a - b);
   if (arr.length != UIManager.correctFrames.length) return false;
@@ -187,7 +178,6 @@ function checkTheAnswer(arr) {
   }
   return true;
 }
-
 function shuffle(array) {
   var copy = [],
     n = array.length,

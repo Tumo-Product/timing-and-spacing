@@ -12,13 +12,12 @@ let maxFr = 0;
 let currentFrame = [];
 let frameStack = [];
 let showTrajectory = true;
-let content;
+var content;
 let getData = getText().then(function (e) {
   content = e["data"][getLanguage];
 });
 let getLanguage = parseURLParams(window.location.href);
 window.onload = function () {
-  console.log();
   document
     .getElementById("start")
     .appendChild(document.createTextNode(content.start));
@@ -70,14 +69,15 @@ function SetupAnimation() {
 
 let loopSys = async () => {
   const range = document.getElementById("timeline");
-
+  var width = 16.21;
   while (true) {
     cont.clearRect(0, 0, canvas.width, canvas.height);
     initializeAndDrawFrames(animFr);
+    var scale = document.getElementById("scale");
+    var timeline = document.getElementById("timeline");
     await delay(37);
     if (animState) {
-      console.log();
-
+      scale.style.width = timeline.value * 16.75 + "px";
       animFr++;
       setValue(animFr);
     }

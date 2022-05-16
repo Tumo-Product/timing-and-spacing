@@ -18,9 +18,9 @@ let initializeTimeline = (cnt) => {
 let generateOption = (id) => {
   let retString = "";
   if (id % 10 === 0) {
-    retString = `<option value="${id}" id="op${id}"> </option>`;
+    retString = `<option value="${id}" id="op${id}" > </option>`;
   } else {
-    retString = `<option value="${id}" id="op${id}"> </option>`;
+    retString = `<option value="${id}" id="op${id}" > </option>`;
   }
 
   return retString;
@@ -36,7 +36,7 @@ let changeValue = () => {
   timeline = document.getElementById("timeline");
   animFr = parseInt(timeline.value);
   setAnimationState(false);
-  scale.style.width = (timeline.value * 805) / 48 + "px";
+  scale.style.width = timeline.value * 16.21 + "px";
   UIManager.btnStateHelper();
 };
 

@@ -31,7 +31,6 @@ const pluginAPI = {
     postMessage("auto-examine", { status: status });
   },
 };
-
 const postMessage = (message, data) => {
   window.parent.postMessage(
     {
