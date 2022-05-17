@@ -50,7 +50,7 @@ body {
 .buttons_row {
   display: flex;
   box-sizing: border-box;
-  width: 881px;
+  width: 877px;
   align-items: center;
   height: 61px;
   border: 1.5px solid #000000;
@@ -59,9 +59,9 @@ body {
   box-shadow: 3px 4px 0 0 #000000;
   position: absolute;
   bottom: 215px;
-  right: 12px;
+  right: 8px;
   justify-content: center;
-  z-index: 10;
+  z-index: 3;
 }
 .buttons_row div {
   display: flex;
@@ -92,16 +92,16 @@ body {
   justify-content: space-evenly;
 }
 #n10 {
-  left: 170px;
+  left: 172px;
 }
 #n20 {
-  left: 336px;
+  left: 334px;
 }
 #n30 {
-  left: 502px;
+  left: 496px;
 }
 #n40 {
-  left: 669px;
+  left: 658px;
 }
 .numbers p {
   position: absolute;
@@ -421,17 +421,21 @@ button {
   position: absolute;
   z-index: 4;
   background: rgba(172, 210, 217, 0.8);
-  width: 861px;
-  height: 310px;
+  width: 885px;
+  height: 582px;
+  left: 3px;
   display: none;
   justify-content: center;
   align-items: center;
+  top: 5px;
 }
 
 #infoCont {
   background: #fff;
-  width: 672px;
-  height: 236px;
+  position: relative;
+  width: 710px;
+  min-height: 236px;
+  max-height: 547px;
   border: 1.5px solid #000000;
   border-radius: 2px;
   background-color: #ffffff;
@@ -445,7 +449,7 @@ button {
 
 #infoBtnRowBg {
   background: url(/assets/newUI/bg.png);
-  width: 643px;
+  width: 681px;
   background-size: 70%;
   border: 1.5px solid #000000;
   border-right: none;
@@ -465,29 +469,124 @@ button {
 }
 
 #infoContRow {
-  height: 206px;
+  min-height: 198px;
+  max-height: 516px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16.5px;
+}
+
+#slider {
+  width: 100%;
+  height: 100%;
+}
+
+#sliderView {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#slide {
+  min-height: 207px;
+  width: 581.76px;
+}
+
+#sliderIndex {
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+#sliderIndex div {
+  height: 15px;
+  width: 15px;
+  border: 1.5px solid #000000;
+  border-radius: 50%;
+  box-shadow: 1px 1px 0 0 #000000;
+  margin-right: 8.97px;
+}
+
+.gif {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#contentList {
+.gif img {
+  height: 340px;
+  width: 630px;
+}
+
+.slideCont {
+  margin-top: 10px;
+}
+
+.slideCont p {
+  color: #000000;
+  font-family: "Fedra Sans Alt Pro Demi";
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.72px;
+  line-height: 6px;
+  margin-left: 50px;
+  text-indent: -35px;
+}
+
+.slideCont p img {
+  position: relative;
+  top: 7px;
+  height: 28px;
+  width: 28px;
+}
+.slideCont p::before {
+  content: " ";
+  position: relative;
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  border: 1.5px solid #000000;
+  background-color: #f1dda1;
+  box-shadow: 1px 1px 0 0 #000000;
+  left: -10px;
+  top: 3px;
+  box-sizing: border-box;
+}
+/* #contentList {
   width: 558px;
+  height: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 #contentList li {
-  list-style-image: url("/assets/newUI/dot.png");
-  height: 30px;
+  width: 101%;
   line-height: 30px;
   color: #000000;
   font-family: "Fedra Sans Alt Pro";
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.62px;
-  line-height: 21px;
-  margin-bottom: 20px;
+  line-height: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+#contentList li:before {
+  content: " ";
+  position: relative;
+  margin-right: 13.75px;
+  background-image: url(/assets/newUI/dot.png);
+  height: 15px;
+  width: 15px;
+  top: 6px;
 }
 
 #contentList li img {
   height: 30px;
   width: 30px;
-}
+  position: relative;
+} */

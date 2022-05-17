@@ -11,6 +11,7 @@
     <script src="src/tools.js"></script>
     <script src="src/data_manager.js"></script>
     <script src="src/pluginAPI.js"></script>
+    <script src="src/slider.js"></script>
   </head>
   <body>
     <div class="border_frame">
@@ -23,7 +24,24 @@
                 <div id="infoBtnRowBg"></div>
               </div>
               <div id="infoContRow">
-                <ul id="contentList"></ul>
+                <div id="slider">
+                  <div id="sliderView">
+                    <div id="prev">
+                      <div id="sliderPrevBtn">
+                        <img src="/assets/newUI/sliderPrev.svg" alt="" />
+                      </div>
+                    </div>
+                    <div id="slide">
+                      <!-- <img src="/assets/newUI/test.gif" alt="" /> -->
+                    </div>
+                    <div id="next">
+                      <div id="sliderNextButton">
+                        <img src="/assets/newUI/sliderNext.svg" alt="" />
+                      </div>
+                    </div>
+                  </div>
+                  <div id="sliderIndex"></div>
+                </div>
               </div>
             </div>
           </div>

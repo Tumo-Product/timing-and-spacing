@@ -7,7 +7,7 @@ let UIManager = {
   importButton: {},
   selectButton: {},
   correctFrames: [1, 8, 13, 18, 22, 25, 27, 29, 48],
-  selectedFrames: [1, 8, 13, 18, 22, 25, 27, 29, 48],
+  selectedFrames: [],
   frameCount: 0,
   _lastState: true,
 
@@ -145,7 +145,7 @@ let UIManager = {
     document.getElementById("exportBtn").style.pointerEvents = "none";
     document.getElementById("selectBtn").style.pointerEvents = "none";
     document.getElementById("deselectBtn").style.pointerEvents = "none";
-    UIManager.presentData(content.info);
+    UIManager.sliderNavigation(content.info);
   },
   btnCloseInfo: function () {
     document.getElementById("info").style.display = "none";
@@ -160,14 +160,32 @@ let UIManager = {
     document.getElementById("selectBtn").style.pointerEvents = "all";
     document.getElementById("deselectBtn").style.pointerEvents = "all";
   },
-  presentData: function (content) {
-    const list = document.getElementById("contentList");
-    list.innerHTML = "";
-    content.forEach((row) => {
-      const el = document.createElement("li");
-      el.insertAdjacentHTML("beforeend", row);
-      list.appendChild(el);
-    });
+  sliderNavigation: function (content) {
+    const indexRow = document.getElementById("sliderIndex");
+    const slide = document.getElementById("slide");
+    slide.innerHTML = "";
+    indexRow.innerHTML = "";
+    for (const [key, value] of Object.entries(content)) {
+      if (value.gif != "") {
+        let gifField = document.createElement("div");
+        gifField.classList.add("gif");
+        var gifImg = document.createElement("img");
+        gifField.append(gifImg);
+        gifImg.src = value.gif;
+        slide.append(gifField);
+      }
+      let textField = document.createElement("div");
+      textField.classList.add("slideCont");
+      let indexCyrcle = document.createElement("div");
+      content[key]["cont"].forEach(function (value) {
+        let paragraph = document.createElement("p");
+        paragraph.innerHTML = value;
+        textField.appendChild(paragraph);
+        slide.append(textField);
+      });
+
+      indexRow.append(indexCyrcle);
+    }
   },
 };
 function checkTheAnswer(arr) {

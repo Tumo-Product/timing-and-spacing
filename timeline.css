@@ -2,6 +2,26 @@
   font-family: "Fedra Sans Alt Pro";
   src: url("/fonts/FedraSansAltPro-Bold.otf");
 }
+@font-face {
+  font-family: "Fedra Sans Alt Medium";
+  src: url("/fonts/FedraSansAltPro-Medium.otf");
+}
+@font-face {
+  font-family: "Fedra Sans Alt Arm Pro";
+  src: url("/fonts/FedraSansAltArm-Bold.otf");
+}
+@font-face {
+  font-family: "Fedra Sans Alt Arm Medium";
+  src: url("/fonts/FedraSansAltArm-Medium.otf");
+}
+@font-face {
+  font-family: "Fedra Sans Alt Pro Demi";
+  src: url("/fonts/FedraSansAltPro-Demi.otf");
+}
+@font-face {
+  font-family: "Fedra Sans Alt Arm Medium";
+  src: url("/fonts/FSerProA-Demi.otf");
+}
 .__range input {
   -webkit-appearance: none;
   box-sizing: border-box;
