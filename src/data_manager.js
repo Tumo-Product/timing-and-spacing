@@ -12,32 +12,23 @@ let initializeDataManager = () => {
   exportBtn.onclick = exportBtnPressed;
 };
 
+let saveAnswerToBuffer = () => {
+  var text = document.getElementById("codeText");
+  navigator.clipboard.writeText(text.innerHTML);
+  UIManager.closeInfoWindow("saved");
+};
+
 let importBtnPressed = () => {
   setAnimationState(false);
-  let importKey = prompt("Please paste your key");
-  try {
-    importKey = Base64.decode(importKey);
-    let strArray = importKey.split(":");
-    console.log(strArray);
-    let numArray = [];
-    for (let i = 0; i < strArray.length; i++) {
-      numArray.push(parseInt(strArray[i]));
-    }
-    UIManager.clearUI();
-    console.log(numArray);
-    for (let i = 0; i < numArray.length; i++) {
-      UIManager.setSelect(numArray[i]);
-    }
-  } catch (error) {
-    alert("Invalid Code");
-  }
+
+  getAnswer();
 };
 
 let exportBtnPressed = () => {
   setAnimationState(false);
 
   if (secondTime) {
-    prompt("Please copy this key:", secondTimeKey);
+    showAnswer(secondTimeKey);
   } else {
     if (checkTheAnswer(UIManager.selectedFrames)) {
       pluginAPI.setAnswers([true]);
@@ -48,10 +39,9 @@ let exportBtnPressed = () => {
         exportString += i === selectedList.length - 1 ? "" : ":";
       }
       let exportKey = Base64.encode(exportString);
-      if (exportKey === "") {
-        exportKey = "Nothing To Export...";
-      }
-      prompt("Please copy this key:", exportKey);
+
+      showAnswer(exportKey);
+
       document.getElementById("row").style.backgroundColor = "#97D644";
       secondTimeKey = exportKey;
       secondTime = true;
@@ -72,3 +62,129 @@ let exportBtnPressed = () => {
     }
   }
 };
+
+function showAnswer(content) {
+  var infoContRow = document.getElementById("infoContRow");
+  var slidesContentField = document.getElementById("slidesContentField");
+  var codeFrame = document.createElement("div");
+  var code = document.createElement("p");
+  var saveBtnFrame = document.createElement("div");
+  var saveBtn = document.createElement("button");
+  var saveImg = document.createElement("img");
+  document.getElementById("info").style.display = "flex";
+  document.getElementById("prev").style.display = "none";
+  document.getElementById("next").style.display = "none";
+
+  slidesContentField.innerHTML = "";
+  slidesContentField.style.width = "100%";
+
+  document.getElementById("sliderIndex").innerHTML = "";
+
+  document.getElementById("infoBtnRowBg").style.background = "none";
+
+  infoContRow.style.background =
+    "url('/assets/newUI/bg.png') center center / 58%";
+  infoContRow.style.height = "288px";
+  infoContRow.style.flexDirection = "column";
+
+  code.classList.add("codeText");
+  code.id = "codeText";
+  code.innerHTML = "Invalide Code";
+
+  codeFrame.classList.add("codeFrame");
+  codeFrame.id = "codeFrame";
+  codeFrame.appendChild(code);
+
+  if (content != "error") {
+    code.innerHTML = content;
+    saveBtnFrame.classList.add("saveBtnFrame");
+    saveBtnFrame.id = "saveBtnFrame";
+    saveBtn.id = "saveBtn";
+    saveBtn.setAttribute("onclick", "saveAnswerToBuffer()");
+    saveImg.src = "/assets/newUI/save.svg";
+    saveBtn.appendChild(saveImg);
+    saveBtnFrame.appendChild(saveBtn);
+    infoContRow.appendChild(saveBtnFrame);
+  }
+  slidesContentField.appendChild(codeFrame);
+  if (content == "error") {
+    document.getElementById("codeFrame").style.width = "100%";
+    infoContRow.style.animation = "wrongToright 1s ";
+    setTimeout(function () {
+      getAnswer();
+      infoContRow.style.animation = "none";
+    }, 800);
+  }
+}
+
+function getAnswer() {
+  if (
+    typeof document.getElementById("checkBtnFrame") != "undefined" &&
+    document.getElementById("checkBtnFrame") != null
+  ) {
+    document.getElementById("checkBtnFrame").remove();
+  }
+  var infoContRow = document.getElementById("infoContRow");
+  var slidesContentField = document.getElementById("slidesContentField");
+  var inputFrame = document.createElement("div");
+  var input = document.createElement("input");
+
+  var checkBtnFrame = document.createElement("div");
+  var checkBtn = document.createElement("button");
+  var checkImg = document.createElement("img");
+
+  document.getElementById("info").style.display = "flex";
+  document.getElementById("prev").style.display = "none";
+  document.getElementById("next").style.display = "none";
+
+  slidesContentField.innerHTML = "";
+  slidesContentField.style.width = "100%";
+
+  document.getElementById("sliderIndex").innerHTML = "";
+
+  document.getElementById("infoBtnRowBg").style.background = "none";
+
+  infoContRow.style.background =
+    "url('/assets/newUI/bg.png') center center / 58%";
+  infoContRow.style.height = "288px";
+  infoContRow.style.flexDirection = "column";
+
+  input.classList.add("inputText");
+  input.id = "inputText";
+
+  inputFrame.classList.add("codeFrame");
+  slidesContentField.style.width = "100%";
+  inputFrame.style.width = "100%";
+
+  inputFrame.appendChild(input);
+
+  checkBtnFrame.classList.add("checkBtnFrame");
+  checkBtnFrame.id = "checkBtnFrame";
+  checkBtn.id = "checkBtn";
+  checkBtn.setAttribute("onclick", "drawAnswer()");
+  checkImg.src = "/assets/newUI/export.svg";
+  checkBtn.appendChild(checkImg);
+  checkBtnFrame.appendChild(checkBtn);
+  infoContRow.appendChild(checkBtnFrame);
+
+  slidesContentField.appendChild(inputFrame);
+}
+
+function drawAnswer() {
+  let importKey = document.getElementById("inputText").value;
+  try {
+    importKey = Base64.decode(importKey);
+    let strArray = importKey.split(":");
+    let numArray = [];
+    for (let i = 0; i < strArray.length; i++) {
+      numArray.push(parseInt(strArray[i]));
+    }
+    UIManager.clearUI();
+    for (let i = 0; i < numArray.length; i++) {
+      UIManager.setSelect(numArray[i]);
+    }
+    UIManager.closeInfoWindow("saved");
+  } catch (error) {
+    showAnswer("error");
+  }
+}

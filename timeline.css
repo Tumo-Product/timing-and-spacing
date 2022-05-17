@@ -40,10 +40,15 @@
   content: "s ";
   height: 35.4px;
   width: 45px;
-  background-image: url("/assets/newUI/arrow.svg");
+  background-image: url("/assets/newUI/notClickedArrow.png");
+  background-repeat: no-repeat;
   position: relative;
-  top: 28px;
+  top: 32px;
   right: 5px;
+}
+
+.__range input::-webkit-slider-thumb:active {
+  background-image: url("/assets/newUI/arrow.png");
 }
 
 .__range-step {

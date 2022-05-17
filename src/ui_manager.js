@@ -152,7 +152,7 @@ let UIManager = {
     document.getElementById("deselectBtn").style.pointerEvents = "none";
     UIManager.sliderView(content.info);
   },
-  closeInfoWindow: function () {
+  closeInfoWindow: function (state) {
     document.getElementById("info").style.display = "none";
     setAnimationState(true);
     UIManager.btnStateHelper();
@@ -164,10 +164,32 @@ let UIManager = {
     document.getElementById("exportBtn").style.pointerEvents = "all";
     document.getElementById("selectBtn").style.pointerEvents = "all";
     document.getElementById("deselectBtn").style.pointerEvents = "all";
+    if (
+      typeof document.getElementById("saveBtnFrame") != "undefined" &&
+      document.getElementById("saveBtnFrame") != null
+    ) {
+      document.getElementById("saveBtnFrame").remove();
+    }
+    if (
+      typeof document.getElementById("checkBtnFrame") != "undefined" &&
+      document.getElementById("checkBtnFrame") != null
+    ) {
+      document.getElementById("checkBtnFrame").remove();
+    }
+    if (state == "saved") {
+      setAnimationState(false);
+    }
   },
   sliderView: function (content) {
     const indexRow = document.getElementById("sliderIndex");
     const slidesContentField = document.getElementById("slidesContentField");
+    slidesContentField.style.width = "auto";
+    document.getElementById("infoContRow").style.background = "none";
+    document.getElementById("infoContRow").style.height = "auto";
+    document.getElementById("infoContRow").style.flexDirection = "row";
+
+    document.getElementById("prev").style.display = "block";
+    document.getElementById("next").style.display = "block";
     slidesContentField.innerHTML = "";
     indexRow.innerHTML = "";
 
@@ -231,9 +253,14 @@ let UIManager = {
       document.getElementById("slidesContentField").children.length - 1;
     if (UIManager.slideId == 0) {
       UIManager.sliderPrevButton.classList.add("disabledSliderBtn");
+      UIManager.sliderPrevButton.style.pointerEvents = "none";
     } else if (UIManager.slideId == maxId) {
       UIManager.sliderNextButton.classList.add("disabledSliderBtn");
+      UIManager.sliderNextButton.style.pointerEvents = "none";
     } else {
+      UIManager.sliderNextButton.style.pointerEvents = "all";
+      UIManager.sliderPrevButton.style.pointerEvents = "all";
+
       UIManager.sliderNextButton.classList.remove("disabledSliderBtn");
       UIManager.sliderPrevButton.classList.remove("disabledSliderBtn");
     }
