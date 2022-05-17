@@ -7,9 +7,10 @@ let UIManager = {
   importButton: {},
   selectButton: {},
   correctFrames: [1, 8, 13, 18, 22, 25, 27, 29, 48],
-  selectedFrames: [],
+  selectedFrames: [1, 8, 13, 18, 22, 25, 27, 29, 48],
   frameCount: 0,
   _lastState: true,
+  slideId: 0,
 
   initializeUIManager: function () {
     this.previousButton = document.getElementById("prevBtn");
@@ -17,10 +18,12 @@ let UIManager = {
     this.playButton = document.getElementById("playBtn");
     this.pauseButton = document.getElementById("pauseBtn");
     this.selectButton = document.getElementById("selectBtn");
-    this.deselectBtn = document.getElementById("deselectBtn");
-    this.infoBtn = document.getElementById("infoBtn");
+    this.deselectButton = document.getElementById("deselectBtn");
+    this.infoButton = document.getElementById("infoBtn");
     this.frameCount = res.frames.count;
-    this.closeInfoBtn = document.getElementById("closeInfoBtn");
+    this.closeInfoButton = document.getElementById("closeInfoBtn");
+    this.sliderNextButton = document.getElementById("sliderNextBtn");
+    this.sliderPrevButton = document.getElementById("sliderPrevBtn");
     this.initializeListeners();
   },
   initializeListeners: function () {
@@ -29,9 +32,11 @@ let UIManager = {
     this.playButton.onclick = this.btnPlay;
     this.pauseButton.onclick = this.btnPause;
     this.selectButton.onclick = this.btnSelect;
-    this.deselectBtn.onclick = this.btnDeselect;
-    this.infoBtn.onclick = this.btnInfo;
-    this.closeInfoBtn.onclick = this.btnCloseInfo;
+    this.deselectButton.onclick = this.btnDeselect;
+    this.infoButton.onclick = this.openInfoWindow;
+    this.closeInfoButton.onclick = this.closeInfoWindow;
+    this.sliderNextButton.onclick = this.slideRight;
+    this.sliderPrevButton.onclick = this.slideLeft;
   },
   btnNext: function () {
     if (animFr !== UIManager.frameCount) {
@@ -133,7 +138,7 @@ let UIManager = {
       this.playButton.style.display = "flex";
     }
   },
-  btnInfo: function () {
+  openInfoWindow: function () {
     document.getElementById("info").style.display = "flex";
     setAnimationState(false);
     UIManager.btnStateHelper();
@@ -145,9 +150,9 @@ let UIManager = {
     document.getElementById("exportBtn").style.pointerEvents = "none";
     document.getElementById("selectBtn").style.pointerEvents = "none";
     document.getElementById("deselectBtn").style.pointerEvents = "none";
-    UIManager.sliderNavigation(content.info);
+    UIManager.sliderView(content.info);
   },
-  btnCloseInfo: function () {
+  closeInfoWindow: function () {
     document.getElementById("info").style.display = "none";
     setAnimationState(true);
     UIManager.btnStateHelper();
@@ -160,12 +165,26 @@ let UIManager = {
     document.getElementById("selectBtn").style.pointerEvents = "all";
     document.getElementById("deselectBtn").style.pointerEvents = "all";
   },
-  sliderNavigation: function (content) {
+  sliderView: function (content) {
     const indexRow = document.getElementById("sliderIndex");
-    const slide = document.getElementById("slide");
-    slide.innerHTML = "";
+    const slidesContentField = document.getElementById("slidesContentField");
+    slidesContentField.innerHTML = "";
     indexRow.innerHTML = "";
+
+    var slideIndex = 0;
     for (const [key, value] of Object.entries(content)) {
+      let slide = document.createElement("div");
+      let indexCyrcle = document.createElement("div");
+      slide.classList.add("slide");
+      indexCyrcle.id = "i" + slideIndex;
+      if (slideIndex == 0) {
+        slide.classList.add("activeSlide");
+        indexCyrcle.classList.add("activeIndex");
+      }
+      slide.id = slideIndex;
+      slidesContentField.appendChild(slide);
+      slideIndex++;
+
       if (value.gif != "") {
         let gifField = document.createElement("div");
         gifField.classList.add("gif");
@@ -176,7 +195,6 @@ let UIManager = {
       }
       let textField = document.createElement("div");
       textField.classList.add("slideCont");
-      let indexCyrcle = document.createElement("div");
       content[key]["cont"].forEach(function (value) {
         let paragraph = document.createElement("p");
         paragraph.innerHTML = value;
@@ -185,6 +203,39 @@ let UIManager = {
       });
 
       indexRow.append(indexCyrcle);
+    }
+    UIManager.sliderButtonHelper();
+  },
+  slideRight: function () {
+    var curentId = document.getElementsByClassName("activeSlide")[0].id;
+    document.getElementById(curentId).classList.remove("activeSlide");
+    document.getElementById(`i${curentId}`).classList.remove("activeIndex");
+    curentId++;
+    document.getElementById(curentId).classList.add("activeSlide");
+    document.getElementById(`i${curentId}`).classList.add("activeIndex");
+    UIManager.slideId++;
+    UIManager.sliderButtonHelper();
+  },
+  slideLeft: function () {
+    var curentId = document.getElementsByClassName("activeSlide")[0].id;
+    document.getElementById(curentId).classList.remove("activeSlide");
+    document.getElementById(`i${curentId}`).classList.remove("activeIndex");
+    curentId--;
+    document.getElementById(curentId).classList.add("activeSlide");
+    document.getElementById(`i${curentId}`).classList.add("activeIndex");
+    UIManager.slideId--;
+    UIManager.sliderButtonHelper();
+  },
+  sliderButtonHelper: function () {
+    let maxId =
+      document.getElementById("slidesContentField").children.length - 1;
+    if (UIManager.slideId == 0) {
+      UIManager.sliderPrevButton.classList.add("disabledSliderBtn");
+    } else if (UIManager.slideId == maxId) {
+      UIManager.sliderNextButton.classList.add("disabledSliderBtn");
+    } else {
+      UIManager.sliderNextButton.classList.remove("disabledSliderBtn");
+      UIManager.sliderPrevButton.classList.remove("disabledSliderBtn");
     }
   },
 };

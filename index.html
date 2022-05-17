@@ -1,17 +1,16 @@
 <!DOCTYPE html>
+<script src="src/anim.js"></script>
+<script src="src/resources.js"></script>
+<script src="src/resource_manager.js"></script>
+<script src="src/frame_timeline.js"></script>
+<script src="src/ui_manager.js"></script>
+<script src="src/tools.js"></script>
+<script src="src/data_manager.js"></script>
+<script src="src/pluginAPI.js"></script>
 <html lang="en">
   <head>
     <link href="style.css" rel="stylesheet" />
     <link href="timeline.css" rel="stylesheet" />
-    <script src="src/anim.js"></script>
-    <script src="src/resources.js"></script>
-    <script src="src/resource_manager.js"></script>
-    <script src="src/frame_timeline.js"></script>
-    <script src="src/ui_manager.js"></script>
-    <script src="src/tools.js"></script>
-    <script src="src/data_manager.js"></script>
-    <script src="src/pluginAPI.js"></script>
-    <script src="src/slider.js"></script>
   </head>
   <body>
     <div class="border_frame">
@@ -27,17 +26,17 @@
                 <div id="slider">
                   <div id="sliderView">
                     <div id="prev">
-                      <div id="sliderPrevBtn">
+                      <button id="sliderPrevBtn">
                         <img src="/assets/newUI/sliderPrev.svg" alt="" />
-                      </div>
+                      </button>
                     </div>
-                    <div id="slide">
-                      <!-- <img src="/assets/newUI/test.gif" alt="" /> -->
+                    <div id="slidesContentField">
+                      <div class="slide"></div>
                     </div>
                     <div id="next">
-                      <div id="sliderNextButton">
+                      <button id="sliderNextBtn">
                         <img src="/assets/newUI/sliderNext.svg" alt="" />
-                      </div>
+                      </button>
                     </div>
                   </div>
                   <div id="sliderIndex"></div>
@@ -45,9 +44,10 @@
               </div>
             </div>
           </div>
-          <div class="canvs">
+          <div class="canvasesSection">
             <canvas id="canv" width="1920" height="1080"> </canvas>
-            <canvas id="alt_canv" width="1920" height="1080"> </canvas>
+            <canvas id="student_answers_canv" width="1920" height="1080">
+            </canvas>
           </div>
           <div class="buttons_row">
             <div class="_uiButton _inactiveBtn" id="infoBtn">
@@ -84,14 +84,14 @@
             <div class="column" id="range-container">
               <div class="scale_range"></div>
               <div class="__range __range-step">
-                <datalist id="ticks1"> </datalist>
+                <datalist id="ticks"> </datalist>
                 <input
                   value="1"
                   type="range"
                   max="5"
                   min="1"
                   step="1"
-                  list="ticks1"
+                  list="ticks"
                   id="timeline"
                   oninput="changeValue()"
                 />

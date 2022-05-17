@@ -4,7 +4,7 @@
 let timeline = {};
 let frameRate = {};
 let initializeTimeline = (cnt) => {
-  let container = document.getElementById("ticks1");
+  let container = document.getElementById("ticks");
   for (let i = 1; i <= cnt; i++) {
     container.innerHTML += generateOption(i);
   }

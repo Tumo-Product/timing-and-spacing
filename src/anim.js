@@ -5,7 +5,7 @@ document.addEventListener("contextmenu", (event) => event.preventDefault());
 let canvas;
 let alt_canvas;
 let cont;
-let alt_cont;
+let student_answers_content;
 let animFr = 1;
 let animState = true;
 let maxFr = 0;
@@ -28,9 +28,9 @@ window.onload = function () {
   canvas = document.getElementById("canv");
   cont = canvas.getContext("2d");
   cont.imageSmoothingEnabled = false;
-  alt_canvas = document.getElementById("alt_canv");
-  alt_cont = alt_canvas.getContext("2d");
-  alt_cont.imageSmoothingEnabled = true;
+  student_answers_canv = document.getElementById("student_answers_canv");
+  student_answers_content = student_answers_canv.getContext("2d");
+  student_answers_content.imageSmoothingEnabled = true;
   manager.LoadAnimation(SetupAnimation);
   initializeDataManager();
   setAnimationState(false);
@@ -119,14 +119,19 @@ let removeSavedFrame = (id) => {
 };
 
 let redrawSavedFrames = () => {
-  alt_cont.clearRect(0, 0, alt_canvas.width, alt_canvas.height);
+  student_answers_content.clearRect(
+    0,
+    0,
+    student_answers_canv.width,
+    student_answers_canv.height
+  );
   for (let i = 0; i < frameStack.length; i++) {
-    alt_cont.drawImage(
+    student_answers_content.drawImage(
       frameStack[i],
       0,
       0,
-      alt_canvas.width,
-      alt_canvas.height
+      student_answers_canv.width,
+      student_answers_canv.height
     );
   }
 };

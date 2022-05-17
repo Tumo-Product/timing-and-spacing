@@ -38,7 +38,7 @@ body {
   transform: scale(0.9);
 }
 
-#alt_canv {
+#student_answers_canv {
   position: relative;
   overflow: hidden;
   width: 900px;
@@ -365,7 +365,7 @@ body {
   }
 }
 
-button {
+#start {
   height: 62px;
   width: 174px;
   border: 1.5px solid #000000;
@@ -394,7 +394,7 @@ button {
   left: 40px;
 }
 
-.canvs {
+.canvasesSection {
   height: 310px;
   position: relative;
   background: #fff;
@@ -490,9 +490,14 @@ button {
   align-items: center;
 }
 
-#slide {
+.slide {
   min-height: 207px;
   width: 581.76px;
+  display: none;
+}
+
+.activeSlide {
+  display: block;
 }
 
 #sliderIndex {
@@ -555,38 +560,15 @@ button {
   top: 3px;
   box-sizing: border-box;
 }
-/* #contentList {
-  width: 558px;
-  height: 190px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
+.activeIndex {
+  background-color: #add2d9;
 }
-#contentList li {
-  width: 101%;
-  line-height: 30px;
-  color: #000000;
-  font-family: "Fedra Sans Alt Pro";
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.62px;
-  line-height: 30px;
-  display: flex;
-  flex-wrap: wrap;
-}
-#contentList li:before {
-  content: " ";
-  position: relative;
-  margin-right: 13.75px;
-  background-image: url(/assets/newUI/dot.png);
-  height: 15px;
-  width: 15px;
-  top: 6px;
+.disabledSliderBtn {
+  opacity: 0.2;
 }
 
-#contentList li img {
-  height: 30px;
-  width: 30px;
-  position: relative;
-} */
+#sliderNextBtn,
+#sliderPrevBtn {
+  background: none;
+  border: none;
+}
