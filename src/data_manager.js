@@ -30,7 +30,7 @@ let exportBtnPressed = () => {
   if (secondTime) {
     showAnswer(secondTimeKey);
   } else {
-    if (checkTheAnswer(UIManager.selectedFrames)) {
+    if (answerCorrect(UIManager.selectedFrames)) {
       pluginAPI.setAnswers([true]);
       let selectedList = shuffle(UIManager.selectedFrames);
       let exportString = "";

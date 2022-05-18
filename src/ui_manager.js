@@ -7,7 +7,7 @@ let UIManager = {
   importButton: {},
   selectButton: {},
   correctFrames: [1, 8, 13, 18, 22, 25, 27, 29, 48],
-  selectedFrames: [1, 8, 13, 18, 22, 25, 27, 29, 48],
+  selectedFrames: [],
   frameCount: 0,
   _lastState: true,
   slideId: 0,
@@ -266,13 +266,12 @@ let UIManager = {
     }
   },
 };
-function checkTheAnswer(arr) {
-  arr.sort((a, b) => a - b);
-  if (arr.length != UIManager.correctFrames.length) return false;
-  for (let i = 0; i < arr.length; i++) {
-    if (!UIManager.correctFrames.includes(arr[i])) return false;
-  }
-  return true;
+function answerCorrect(arr) {
+  const sortedArray = arr.slice().sort((a, b) => a - b);
+  return (
+    sortedArray.length === UIManager.correctFrames.length &&
+    UIManager.correctFrames.every((val, index) => val === sortedArray[index])
+  );
 }
 function shuffle(array) {
   var copy = [],

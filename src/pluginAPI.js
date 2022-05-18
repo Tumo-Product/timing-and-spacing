@@ -9,12 +9,12 @@ const pluginAPI = {
 
         const { data } = event.data;
 
-        if (data === undefined) {
+        if (!data) {
           resolve();
           return false;
         }
 
-        if (data.message !== undefined) {
+        if (data.message) {
           resolve();
           return true;
         }

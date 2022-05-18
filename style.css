@@ -10,7 +10,7 @@ body {
   overflow: hidden;
 }
 
-.border_frame {
+.borderFrame {
   width: 100%;
   height: 600px;
   background-color: #acd2d9;
@@ -19,14 +19,14 @@ body {
   overflow: hidden;
 }
 
-.white_space {
+.whiteSpace {
   border: 1.5px solid #000;
   width: 100%;
   height: 100%;
   background-color: #fff;
 }
 
-#mainbox {
+#mainBox {
   height: 100%;
   width: 100%;
 }
@@ -39,7 +39,7 @@ body {
   transform: scale(0.9);
 }
 
-#student_answers_canv {
+#studentAnswersCanvas {
   position: relative;
   overflow: hidden;
   width: 900px;
@@ -240,7 +240,7 @@ body {
   font-family: fantasy;
 }
 
-#range-container {
+#rangeContainer {
   width: 100%;
   margin-top: 1%;
 }
@@ -269,7 +269,7 @@ body {
   border-radius: 6px;
 }
 
-.exportButton {
+.inportButton {
   box-sizing: border-box;
   height: 40px;
   width: 61px;
@@ -282,7 +282,7 @@ body {
   align-items: center;
 }
 
-#control_row {
+#controlRow {
   display: flex;
   position: relative;
   justify-content: space-between;
@@ -299,7 +299,7 @@ body {
   left: 14px;
 }
 
-#start_frame {
+#startFrame {
   box-sizing: border-box;
   height: 206px;
   width: 880.42px;
@@ -359,7 +359,7 @@ body {
   text-align: center;
 }
 
-.scale_range {
+.scaleRange {
   z-index: 1;
   background-image: url(/assets/newUI/scale.svg);
   width: 781px;

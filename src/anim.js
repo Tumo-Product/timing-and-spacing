@@ -2,10 +2,10 @@
  * Created by admin on 11/28/2019.
  */
 document.addEventListener("contextmenu", (event) => event.preventDefault());
-let canvas;
-let alt_canvas;
-let cont;
-let student_answers_content;
+let animationCanvas;
+let studentAnswersCanvas;
+let animationCanvasContent;
+let studentAnswersContent;
 let animFr = 1;
 let animState = true;
 let maxFr = 0;
@@ -13,42 +13,31 @@ let currentFrame = [];
 let frameStack = [];
 let showTrajectory = true;
 var content;
+let language = languageFromURL(window.location.href);
 let getData = getText().then(function (e) {
-  content = e["data"][getLanguage];
+  content = e.data[language];
 });
-let getLanguage = parseURLParams(window.location.href);
 window.onload = function () {
   document
     .getElementById("start")
     .appendChild(document.createTextNode(content.start));
-  document.getElementById("playBtn").style.pointerEvents = "none";
-  document.getElementById("infoBtn").style.pointerEvents = "none";
-  document.getElementById("nextBtn").style.pointerEvents = "none";
-  document.getElementById("prevBtn").style.pointerEvents = "none";
-  canvas = document.getElementById("canv");
-  cont = canvas.getContext("2d");
-  cont.imageSmoothingEnabled = false;
-  student_answers_canv = document.getElementById("student_answers_canv");
-  student_answers_content = student_answers_canv.getContext("2d");
-  student_answers_content.imageSmoothingEnabled = true;
+  playAndPauseButtonsState("none");
+  animationCanvas = document.getElementById("canv");
+  animationCanvasContent = animationCanvas.getContext("2d");
+  animationCanvasContent.imageSmoothingEnabled = false;
+  studentAnswersCanvas = document.getElementById("studentAnswersCanvas");
+  studentAnswersContent = studentAnswersCanvas.getContext("2d");
+  studentAnswersContent.imageSmoothingEnabled = true;
   manager.LoadAnimation(SetupAnimation);
   initializeDataManager();
   setAnimationState(false);
 };
 
 function start() {
-  document.getElementById("playBtn").style.pointerEvents = "all";
-  document.getElementById("nextBtn").style.pointerEvents = "all";
-  document.getElementById("prevBtn").style.pointerEvents = "all";
-  document.getElementById("infoBtn").style.pointerEvents = "all";
-  document.getElementById("playBtn").classList.remove("_inactiveBtn");
-  document.getElementById("infoBtn").classList.remove("_inactiveBtn");
-  document.getElementById("prevBtn").classList.remove("_inactiveBtn");
-  document.getElementById("nextBtn").classList.remove("_inactiveBtn");
-  document.getElementById("start_frame").style.animation =
+  document.getElementById("startFrame").style.animation =
     "moveDown 1.6s forwards";
   document.getElementById("row").style.animation = "moveRowDown 1s forwards";
-  document.getElementById("control_row").style.animation =
+  document.getElementById("controlRow").style.animation =
     "moveButtonsDown 1s forwards";
 
   setTimeout(function () {
@@ -57,27 +46,34 @@ function start() {
     document.getElementById("row").style.display = "block";
   }, 100);
   setAnimationState(true);
+  playAndPauseButtonsState("all");
 }
 
 function SetupAnimation() {
-  cont.drawImage(manager.frames[1], 0, 0);
+  animationCanvasContent.drawImage(manager.frames[1], 0, 0);
   maxFr = res.frames.count;
   initializeTimeline(maxFr);
   UIManager.initializeUIManager();
-  loopSys();
+  loopSystem();
 }
 
-let loopSys = async () => {
+let loopSystem = async () => {
   const range = document.getElementById("timeline");
-  var width = 16.21;
   while (true) {
-    cont.clearRect(0, 0, canvas.width, canvas.height);
+    animationCanvasContent.clearRect(
+      0,
+      0,
+      animationCanvas.width,
+      animationCanvas.height
+    );
     initializeAndDrawFrames(animFr);
     var scale = document.getElementById("scale");
     var timeline = document.getElementById("timeline");
     await delay(37);
     if (animState) {
-      scale.style.width = timeline.value * 16.75 + "px";
+      if (timeline.value > 30) scale.style.width = timeline.value * 16.5 + "px";
+      else if (timeline.value == 48) scale.style.width = "778.08px";
+      else scale.style.width = timeline.value * 16.8 + "px";
       animFr++;
       setValue(animFr);
     }
@@ -98,9 +94,20 @@ let initializeAndDrawFrames = (a) => {
 };
 
 let drawFrame = () => {
-  cont.clearRect(0, 0, canvas.width, canvas.height);
+  animationCanvasContent.clearRect(
+    0,
+    0,
+    animationCanvas.width,
+    animationCanvas.height
+  );
   for (let i = 0; i < currentFrame.length; i++) {
-    cont.drawImage(currentFrame[i], 0, 0, canvas.width, canvas.height);
+    animationCanvasContent.drawImage(
+      currentFrame[i],
+      0,
+      0,
+      animationCanvas.width,
+      animationCanvas.height
+    );
   }
 };
 
@@ -119,19 +126,19 @@ let removeSavedFrame = (id) => {
 };
 
 let redrawSavedFrames = () => {
-  student_answers_content.clearRect(
+  studentAnswersContent.clearRect(
     0,
     0,
-    student_answers_canv.width,
-    student_answers_canv.height
+    studentAnswersCanvas.width,
+    studentAnswersCanvas.height
   );
   for (let i = 0; i < frameStack.length; i++) {
-    student_answers_content.drawImage(
+    studentAnswersContent.drawImage(
       frameStack[i],
       0,
       0,
-      student_answers_canv.width,
-      student_answers_canv.height
+      studentAnswersCanvas.width,
+      studentAnswersCanvas.height
     );
   }
 };
@@ -142,7 +149,7 @@ async function getText() {
   return content;
 }
 
-function parseURLParams(url) {
+function languageFromURL(url) {
   var queryStart = url.indexOf("?") + 1,
     queryEnd = url.indexOf("#") + 1 || url.length + 1,
     query = url.slice(queryStart, queryEnd - 1),
@@ -163,7 +170,25 @@ function parseURLParams(url) {
     if (!parms.hasOwnProperty(n)) parms[n] = [];
     parms[n].push(nv.length === 2 ? v : null);
   }
-  return parms["lang"];
+  return parms["lang"][0];
+}
+//none || all
+function playAndPauseButtonsState(state) {
+  if (state == "all") {
+    document.getElementById("playBtn").style.pointerEvents = "all";
+    document.getElementById("nextBtn").style.pointerEvents = "all";
+    document.getElementById("prevBtn").style.pointerEvents = "all";
+    document.getElementById("infoBtn").style.pointerEvents = "all";
+    document.getElementById("playBtn").classList.remove("_inactiveBtn");
+    document.getElementById("infoBtn").classList.remove("_inactiveBtn");
+    document.getElementById("prevBtn").classList.remove("_inactiveBtn");
+    document.getElementById("nextBtn").classList.remove("_inactiveBtn");
+  } else if (state == "none") {
+    document.getElementById("playBtn").style.pointerEvents = "none";
+    document.getElementById("infoBtn").style.pointerEvents = "none";
+    document.getElementById("nextBtn").style.pointerEvents = "none";
+    document.getElementById("prevBtn").style.pointerEvents = "none";
+  }
 }
 
 const delay = (ms) => new Promise((res) => setTimeout(res, ms));
