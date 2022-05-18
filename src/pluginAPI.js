@@ -1,25 +1,33 @@
 const pluginAPI = {
   initialize: async () => {
     postMessage("init");
-    return new Promise((resolve) => {
+    let value = false;
+
+    await new Promise((resolve) => {
       window.addEventListener("message", async (event) => {
         if (event.data.application !== "activity-manager") {
+          resolve();
           return;
         }
-
         const { data } = event.data;
 
         if (!data) {
           resolve();
-          return false;
+          value = false;
+          return;
         }
-
         if (data.message) {
           resolve();
-          return true;
+          if (data.answers) {
+            value = data.answers[0];
+            return;
+          }
         }
+        resolve();
+        value = false;
       });
     });
+    return value;
   },
   setHeight: async (height) => {
     postMessage("set-iframe-height", { iframeHeight: height });
@@ -41,4 +49,3 @@ const postMessage = (message, data) => {
     "*"
   );
 };
-pluginAPI.initialize();

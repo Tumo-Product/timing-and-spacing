@@ -18,6 +18,7 @@ let getData = getText().then(function (e) {
   content = e.data[language];
 });
 window.onload = function () {
+  pluginAPI.setHeight(600);
   document
     .getElementById("start")
     .appendChild(document.createTextNode(content.start));

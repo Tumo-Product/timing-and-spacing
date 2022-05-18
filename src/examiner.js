@@ -1,13 +1,9 @@
 const showAnswer = async function () {
-  var answer = await pluginAPI.initialize();
+  let answer = await pluginAPI.initialize();
+  pluginAPI.examine(answer);
   pluginAPI.setHeight(100);
-  if (answer[0]) {
-    pluginAPI.examine(true);
-    console.log(document.getElementById("answerBox"));
-    document.getElementById("answerBox").style.background = "#8CC541";
-  } else {
-    pluginAPI.examine(false);
-    document.getElementById("answerBox").style.background = "#F25A2A";
-  }
+  document.getElementById("answerBox").style.background = answer
+    ? "#8CC541"
+    : "#F25A2A";
 };
-showAnswer();
+window.onload = showAnswer;
