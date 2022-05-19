@@ -1,0 +1,33 @@
+{
+  "data": {
+    "en": {
+      "start": "Start",
+      "info": {
+        "slide1": {
+          "gif": "assets/newUI/test.gif",
+          "cont": [
+            "For  precise selection,<img src='assets/newUI/frame.png'> the ball and move the frames <img src='assets/newUI/frame.png'> and <img src='assets/newUI/frame.png'>",
+            "To mark the keyframe, click on the <img src='assets/newUI/frame.png'> . If you make a mistake, just click on <img src='assets/newUI/frame.png'>to remove it.",
+            "Once you’re done, click <img src='assets/newUI/frame.png'>to copy your code."
+          ]
+        },
+        "slide2": {
+          "gif": "",
+          "cont": [
+            "For  precise selection,<img src='assets/newUI/frame.png'> the ball and move the frames <img src='assets/newUI/frame.png'> and <img src='assets/newUI/frame.png'>",
+            "To mark the keyframe, click on the <img src='assets/newUI/frame.png'> . If you make a mistake, just click on <img src='assets/newUI/frame.png'>to remove it.",
+            "Once you’re done, click <img src='assets/newUI/frame.png'>to copy your code."
+          ]
+        },
+        "slide3": {
+          "gif": "",
+          "cont": [
+            "For  precise selection, <img src='assets/newUI/frame.png'> the ball and move the frames <img src='assets/newUI/frame.png'> and <img src='assets/newUI/frame.png'>",
+            "To mark the keyframe, click on the <img src='assets/newUI/frame.png'> . If you make a mistake, just click on <img src='assets/newUI/frame.png'>to remove it.",
+            "Once you’re done, click <img src='assets/newUI/frame.png'>to copy your code."
+          ]
+        }
+      }
+    }
+  }
+}

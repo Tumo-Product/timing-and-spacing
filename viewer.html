@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<script src="src/anim.js"></script>
+<script src="src/resources.js"></script>
+<script src="src/resource_manager.js"></script>
+<script src="src/frame_timeline.js"></script>
+<script src="src/ui_manager.js"></script>
+<script src="src/tools.js"></script>
+<script src="src/data_manager.js"></script>
+<script src="src/pluginAPI.js"></script>
+<html lang="en">
+  <head>
+    <link href="style.css" rel="stylesheet" />
+    <link href="timeline.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="borderFrame">
+      <div class="whiteSpace">
+        <div id="mainBox">
+          <div id="info">
+            <div id="infoContext">
+              <div id="infoButtonRow">
+                <button id="closeInfoButton"></button>
+                <div id="infoButtonRowBg"></div>
+              </div>
+              <div id="infoContextRow">
+                <div id="slider">
+                  <div id="sliderView">
+                    <div id="prev">
+                      <button id="sliderPrevButton">
+                        <img src="/assets/newUI/sliderPrev.svg" alt="" />
+                      </button>
+                    </div>
+                    <div id="slidesContentField"></div>
+                    <div id="next">
+                      <button id="sliderNextButton">
+                        <img src="/assets/newUI/sliderNext.svg" alt="" />
+                      </button>
+                    </div>
+                  </div>
+                  <div id="sliderIndex"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="canvasesSection">
+            <canvas id="canv" width="1920" height="1080"> </canvas>
+            <canvas id="studentAnswersCanvas" width="1920" height="1080">
+            </canvas>
+          </div>
+          <div class="buttonsRow">
+            <div class="_uiButton _inactiveBtn" id="infoBtn">
+              <img src="./assets/newUI/info.svg" alt="" />
+            </div>
+            <div class="buttons_center">
+              <div class="_uiButton round lightBg _inactiveBtn" id="prevBtn">
+                <img src="./assets/newUI/previous.svg" alt="" />
+              </div>
+              <div
+                class="_uiButton round darkBg box-shadow _inactiveBtn"
+                id="playBtn"
+              >
+                <img src="./assets/newUI/play.svg" alt="" />
+              </div>
+              <div class="_uiButton round darkBg box-shadow" id="pauseBtn">
+                <img src="./assets/newUI/pause.svg" alt="" />
+              </div>
+              <div class="_uiButton round lightBg _inactiveBtn" id="nextBtn">
+                <img src="./assets/newUI/next.svg" alt="" />
+              </div>
+            </div>
+          </div>
+          <div id="startFrame">
+            <button id="start" onclick="start()"></button>
+          </div>
+          <div id="row">
+            <div class="numbers">
+              <p id="n10">10</p>
+              <p id="n20">20</p>
+              <p id="n30">30</p>
+              <p id="n40">40</p>
+            </div>
+            <div class="column" id="rangeContainer">
+              <div class="scaleRange"></div>
+              <div class="__range __range-step">
+                <datalist id="ticks"> </datalist>
+                <input
+                  value="1"
+                  type="range"
+                  max="5"
+                  min="1"
+                  step="1"
+                  list="ticks"
+                  id="timeline"
+                  oninput="changeValue()"
+                />
+                <div class="scale" id="scale"></div>
+              </div>
+            </div>
+          </div>
+          <div id="controlRow">
+            <div class="inportButton" id="importBtn">
+              <img src="./assets/newUI/import.svg" alt="" />
+            </div>
+            <div class="addButtons">
+              <div class="_uiButton boxShadow roundBorder" id="deselectBtn">
+                <img src="./assets/newUI/remove.svg" alt="" />
+              </div>
+              <div class="_uiButton boxShadow roundBorder" id="selectBtn">
+                <img src="./assets/newUI/add.svg" alt="" />
+              </div>
+            </div>
+            <div class="_uiButton lightBg boxShadow roundBorder" id="exportBtn">
+              <img src="./assets/newUI/export.svg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

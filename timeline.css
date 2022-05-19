@@ -1,129 +1,141 @@
-.__range input
-{
-    outline: none;
-    background-color: #aaa;
-    height: 3px;
-    width: 100%;
-    margin: 10px auto;
+@font-face {
+  font-family: "Fedra Sans Alt Pro";
+  src: url("/fonts/FedraSansAltPro-Bold.otf");
 }
-.__range input::-webkit-slider-thumb
-{
-    -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
-    background-color: green;
-    border-radius: 50%;
-    cursor: -moz-grab;
-    cursor: -webkit-grab;
+@font-face {
+  font-family: "Fedra Sans Alt Medium";
+  src: url("/fonts/FedraSansAltPro-Medium.otf");
 }
-.__range input::-moz-range-thumb
-{
-    -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
-    background-color: green;
-    border-radius: 50%;
-    cursor: -moz-grab;
-    cursor: -webkit-grab;
+@font-face {
+  font-family: "Fedra Sans Alt Arm Pro";
+  src: url("/fonts/FedraSansAltArm-Bold.otf");
 }
-.__range input::-ms-thumb
-{
-    -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
-    background-color: green;
-    border-radius: 50%;
-    cursor: -moz-grab;
-    cursor: -webkit-grab;
+@font-face {
+  font-family: "Fedra Sans Alt Arm Medium";
+  src: url("/fonts/FedraSansAltArm-Medium.otf");
 }
-.__range-step{
-    position: relative;
+@font-face {
+  font-family: "Fedra Sans Alt Pro Demi";
+  src: url("/fonts/FedraSansAltPro-Demi.otf");
+}
+@font-face {
+  font-family: "Fedra Sans Alt Arm Medium";
+  src: url("/fonts/FSerProA-Demi.otf");
+}
+.__range input {
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  height: 29px;
+  width: 807px;
+  border: 1.5px solid #000000;
+  border-radius: 2px;
+  box-shadow: 2px 3px 0 0 #000000;
+  position: relative;
+  left: 13px;
+  bottom: -63px;
 }
 
-.__range-max{
-    float: right;
+.__range input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  content: "s ";
+  height: 35.4px;
+  width: 45px;
+  background-image: url("/assets/newUI/notClickedArrow.png");
+  background-repeat: no-repeat;
+  position: relative;
+  top: 32px;
+  /* right: 16px; */
+  right: 5px;
 }
-.__range-step input::-webkit-slider-thumb
-{
-    background: transparent;
+
+.__range input::-webkit-slider-thumb:active {
+  background-image: url("/assets/newUI/arrow.png");
 }
-.__range-step input::-moz-range-thumb
-{
-    background: transparent;
+
+.__range-step {
+  position: relative;
 }
-.__range-step input::-ms-thumb
-{
-    background: transparent;
+
+.__range-max {
+  float: right;
 }
+
 .__range-step datalist {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    height: auto;
-    bottom: 16px;
-    font-size: 1.2vw;
-    margin-top: 7px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    pointer-events: none;
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  height: auto;
+  z-index: 2;
+  bottom: -59px;
+  left: 23px;
+  font-size: 1.2vw;
+  margin-top: 7px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  width: 777px;
+  margin: 0 auto;
+}
+
+.points {
+  position: absolute;
 }
 .__range-step datalist option {
-    width: 10px;
-    height: 10px;
-    min-height: 10px;
-    border-radius: 100px;
-    white-space: nowrap;
-    padding: 0px 2px 0px 0px;
-    text-align: center;
-    line-height: 40px;
-    font-size: larger;
+  width: 15px;
+  height: 15px;
+  min-height: 10px;
+  border-radius: 100px;
+  white-space: nowrap;
+  padding: 0px 2px 0px 0px;
+  text-align: center;
+  line-height: 40px;
+  font-size: larger;
+  margin-right: 0px;
 }
 
+.__range-step-popup output {
+  position: absolute;
+  background-color: green;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  color: white;
+  border-radius: 100px;
+  display: inline-block;
+  font-size: 12px;
+  bottom: 100%;
+  left: 0;
+  vertical-align: middle;
+  line-height: 30px;
+}
 
-.__range-step-popup output
-{
-    position: absolute;
-    background-color: green;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    color: white;
-    border-radius: 100px;
-    display: inline-block;
-    font-size:12px;
-    bottom: 100%;
-    left: 0;
-    vertical-align: middle;
-    line-height: 30px;
+.__range-step-popup .__range-output-square {
+  padding: 0 5px;
+  min-width: 25px;
+  width: auto !important;
+  border-radius: 5px !important;
 }
-.__range-step-popup .__range-output-square{
-    padding: 0 5px;
-    min-width: 25px;
-    width: auto !important;
-    border-radius: 5px !important;
+.__range-step-popup output:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 10px solid green;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  top: 90%;
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -1px;
 }
-.__range-step-popup output:after
-{
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border-top: 10px solid green;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    top: 90%;
-    left: 50%;
-    margin-left: -10px;
-    margin-top: -1px;
+.__range-step-popup datalist {
+  overflow: hidden;
 }
-.__range-step-popup datalist{
-    overflow:hidden;
+.__range-step {
+  margin: 0 20px;
 }
-.__range-step{
-    margin:0 20px;
-}
-.__range-step-popup{
-    margin:40px 40px;
+.__range-step-popup {
+  margin: 40px 40px;
 }
