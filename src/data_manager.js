@@ -26,7 +26,9 @@ let importBtnPressed = () => {
 
 let exportBtnPressed = () => {
   setAnimationState(false);
-
+  // We need second time variable to fix showing save popup for multiple times.
+  // Without this the popup will not appear more than one time.
+  // Todo: remove this variable and find a solution to fix the issue.
   if (secondTime) {
     showAnswer(secondTimeKey);
   } else {
@@ -64,7 +66,7 @@ let exportBtnPressed = () => {
 };
 
 function showAnswer(content) {
-  var infoContRow = document.getElementById("infoContRow");
+  var infoContextRow = document.getElementById("infoContextRow");
   var slidesContentField = document.getElementById("slidesContentField");
   var codeFrame = document.createElement("div");
   var code = document.createElement("p");
@@ -80,12 +82,12 @@ function showAnswer(content) {
 
   document.getElementById("sliderIndex").innerHTML = "";
 
-  document.getElementById("infoBtnRowBg").style.background = "none";
+  document.getElementById("infoButtonRowBg").style.background = "none";
 
-  infoContRow.style.background =
+  infoContextRow.style.background =
     "url('/assets/newUI/bg.png') center center / 58%";
-  infoContRow.style.height = "288px";
-  infoContRow.style.flexDirection = "column";
+  infoContextRow.style.height = "288px";
+  infoContextRow.style.flexDirection = "column";
 
   code.classList.add("codeText");
   code.id = "codeText";
@@ -104,15 +106,15 @@ function showAnswer(content) {
     saveImg.src = "/assets/newUI/save.svg";
     saveBtn.appendChild(saveImg);
     saveBtnFrame.appendChild(saveBtn);
-    infoContRow.appendChild(saveBtnFrame);
+    infoContextRow.appendChild(saveBtnFrame);
   }
   slidesContentField.appendChild(codeFrame);
   if (content == "error") {
     document.getElementById("codeFrame").style.width = "100%";
-    infoContRow.style.animation = "wrongToright 1s ";
+    infoContextRow.style.animation = "wrongToright 1s ";
     setTimeout(function () {
       getAnswer();
-      infoContRow.style.animation = "none";
+      infoContextRow.style.animation = "none";
     }, 800);
   }
 }
@@ -124,7 +126,7 @@ function getAnswer() {
   ) {
     document.getElementById("checkBtnFrame").remove();
   }
-  var infoContRow = document.getElementById("infoContRow");
+  var infoContextRow = document.getElementById("infoContextRow");
   var slidesContentField = document.getElementById("slidesContentField");
   var inputFrame = document.createElement("div");
   var input = document.createElement("input");
@@ -142,12 +144,12 @@ function getAnswer() {
 
   document.getElementById("sliderIndex").innerHTML = "";
 
-  document.getElementById("infoBtnRowBg").style.background = "none";
+  document.getElementById("infoButtonRowBg").style.background = "none";
 
-  infoContRow.style.background =
+  infoContextRow.style.background =
     "url('/assets/newUI/bg.png') center center / 58%";
-  infoContRow.style.height = "288px";
-  infoContRow.style.flexDirection = "column";
+  infoContextRow.style.height = "288px";
+  infoContextRow.style.flexDirection = "column";
 
   input.classList.add("inputText");
   input.id = "inputText";
@@ -165,7 +167,7 @@ function getAnswer() {
   checkImg.src = "/assets/newUI/export.svg";
   checkBtn.appendChild(checkImg);
   checkBtnFrame.appendChild(checkBtn);
-  infoContRow.appendChild(checkBtnFrame);
+  infoContextRow.appendChild(checkBtnFrame);
 
   slidesContentField.appendChild(inputFrame);
 }

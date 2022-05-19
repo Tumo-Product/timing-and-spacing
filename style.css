@@ -48,10 +48,10 @@ body {
   transform: scale(0.9);
 }
 
-.buttons_row {
+.buttonsRow {
   display: flex;
   box-sizing: border-box;
-  width: 877px;
+  width: 883px;
   align-items: center;
   height: 61px;
   border: 1.5px solid #000000;
@@ -64,7 +64,7 @@ body {
   justify-content: center;
   z-index: 3;
 }
-.buttons_row div {
+.buttonsRow div {
   display: flex;
 }
 
@@ -216,7 +216,7 @@ body {
   background-size: 58%;
   box-sizing: border-box;
   height: 204px;
-  width: 864px;
+  width: 870px;
   border-radius: 2px;
   background-color: #ffffff;
   background-image: url(/assets/newUI/bg.png);
@@ -261,11 +261,11 @@ body {
   background-color: #acd2d9;
 }
 
-.box-shadow {
+.boxShadow {
   box-shadow: 2px 1px 0 0 #000000;
 }
 
-.round-border {
+.roundBorder {
   border-radius: 6px;
 }
 
@@ -302,7 +302,7 @@ body {
 #startFrame {
   box-sizing: border-box;
   height: 206px;
-  width: 880.42px;
+  width: 881.42px;
   border-radius: 2px;
   background-color: #add2d9;
   position: absolute;
@@ -379,7 +379,7 @@ body {
   z-index: 3;
 }
 
-.add_buttons {
+.addButtons {
   display: flex;
 }
 
@@ -399,16 +399,16 @@ body {
   position: absolute;
   z-index: 4;
   background: rgba(172, 210, 217, 0.8);
-  width: 885px;
+  width: 889px;
   height: 582px;
-  left: 3px;
+  left: 7px;
   display: none;
   justify-content: center;
   align-items: center;
   top: 5px;
 }
 
-#infoCont {
+#infoContext {
   background: #fff;
   position: relative;
   width: 710px;
@@ -420,19 +420,19 @@ body {
   box-shadow: 3px 3px 0 0 #000000;
 }
 
-#infoBtnRow {
+#infoButtonRow {
   width: 100%;
   display: flex;
 }
 
-#infoBtnRowBg {
+#infoButtonRowBg {
   background: url(/assets/newUI/bg.png);
   width: 681px;
   background-size: 70%;
   border: 1.5px solid #000000;
   border-right: none;
 }
-#closeInfoBtn {
+#closeInfoButton {
   background: url("/assets/newUI/cross.svg") no-repeat;
   background-position: center;
   box-sizing: border-box;
@@ -446,7 +446,7 @@ body {
   align-items: center;
 }
 
-#infoContRow {
+#infoContextRow {
   min-height: 209px;
   max-height: 516px;
   display: flex;
@@ -545,8 +545,8 @@ body {
   opacity: 0.2;
 }
 
-#sliderNextBtn,
-#sliderPrevBtn {
+#sliderNextButton,
+#sliderPrevButton {
   background: none;
   border: none;
 }

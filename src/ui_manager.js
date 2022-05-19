@@ -21,9 +21,9 @@ let UIManager = {
     this.deselectButton = document.getElementById("deselectBtn");
     this.infoButton = document.getElementById("infoBtn");
     this.frameCount = res.frames.count;
-    this.closeInfoButton = document.getElementById("closeInfoBtn");
-    this.sliderNextButton = document.getElementById("sliderNextBtn");
-    this.sliderPrevButton = document.getElementById("sliderPrevBtn");
+    this.closeInfoButton = document.getElementById("closeInfoButton");
+    this.sliderNextButton = document.getElementById("sliderNextButton");
+    this.sliderPrevButton = document.getElementById("sliderPrevButton");
     this.initializeListeners();
   },
   initializeListeners: function () {
@@ -184,9 +184,9 @@ let UIManager = {
     const indexRow = document.getElementById("sliderIndex");
     const slidesContentField = document.getElementById("slidesContentField");
     slidesContentField.style.width = "auto";
-    document.getElementById("infoContRow").style.background = "none";
-    document.getElementById("infoContRow").style.height = "auto";
-    document.getElementById("infoContRow").style.flexDirection = "row";
+    document.getElementById("infoContextRow").style.background = "none";
+    document.getElementById("infoContextRow").style.height = "auto";
+    document.getElementById("infoContextRow").style.flexDirection = "row";
 
     document.getElementById("prev").style.display = "block";
     document.getElementById("next").style.display = "block";
