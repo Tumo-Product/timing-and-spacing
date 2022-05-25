@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  cursor: url("/assets/newUI/cursor.svg"), auto;
+  cursor: url("./assets/newUI/cursor.svg"), auto;
   user-select: none;
 }
 
@@ -361,7 +361,7 @@ body {
 
 .scaleRange {
   z-index: 1;
-  background-image: url(/assets/newUI/scale.svg);
+  background-image: url(./assets/newUI/scale.svg);
   width: 781px;
   height: 29px;
   background-repeat: no-repeat;
@@ -426,14 +426,14 @@ body {
 }
 
 #infoButtonRowBg {
-  background: url(/assets/newUI/bg.png);
+  background: url(./assets/newUI/bg.png);
   width: 681px;
   background-size: 70%;
   border: 1.5px solid #000000;
   border-right: none;
 }
 #closeInfoButton {
-  background: url("/assets/newUI/cross.svg") no-repeat;
+  background: url("./assets/newUI/cross.svg") no-repeat;
   background-position: center;
   box-sizing: border-box;
   height: 26.5px;
