@@ -114,7 +114,7 @@ body {
   box-shadow: 2px 2px 0 0 #000000;
   border-radius: 50%;
   color: #000000;
-  font-family: "Fedra Sans Alt Pro";
+  font-family: "Fedra Sans Alt Pro","Fedra Sans Alt Arm Pro";
   font-size: 24px;
   font-weight: bold;
   letter-spacing: 1.15px;
@@ -351,7 +351,7 @@ body {
   background-color: #ffffff;
   box-shadow: 2px 2px 0 0 #000000;
   color: #202327;
-  font-family: "Fedra Sans Alt Pro";
+  font-family: "Fedra Sans Alt Pro","Fedra Sans Alt Arm Pro";
   font-size: 30px;
   font-weight: bold;
   letter-spacing: 1.44px;
@@ -510,7 +510,7 @@ body {
 
 .slideCont p {
   color: #000000;
-  font-family: "Fedra Sans Alt Pro Demi";
+  font-family: "Fedra Sans Alt Pro Demi","Fedra Sans Alt Arm Demi";
   font-size: 15px;
   font-weight: 500;
   letter-spacing: 0.72px;
@@ -634,7 +634,7 @@ body {
 
 .codeText {
   color: #5a5858;
-  font-family: "Fedra Sans Alt Pro Demi";
+  font-family: "Fedra Sans Alt Pro Demi","Fedra Sans Alt Arm Demi";
   font-size: 23px;
   font-weight: 500;
   letter-spacing: 0;
@@ -675,7 +675,7 @@ body {
   border: none;
   outline: none !important;
   color: #5a5858;
-  font-family: "Fedra Sans Alt Pro Demi";
+  font-family: "Fedra Sans Alt Pro Demi","Fedra Sans Alt Arm Demi";
   font-size: 23px;
   font-weight: 500;
   letter-spacing: 0;
