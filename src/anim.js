@@ -12,16 +12,14 @@ let maxFr = 0;
 let currentFrame = [];
 let frameStack = [];
 let showTrajectory = true;
-var content;
 let language = languageFromURL(window.location.href);
-let getData = getText().then(function (e) {
-  content = e.data[language];
-});
-window.onload = function () {
+
+window.onload = async function () {
+  let getData = await getText(language)
   pluginAPI.setHeight(600);
   document
     .getElementById("start")
-    .appendChild(document.createTextNode(content.start));
+    .appendChild(document.createTextNode(getData.start));
   playAndPauseButtonsState("none");
   animationCanvas = document.getElementById("canv");
   animationCanvasContent = animationCanvas.getContext("2d");
@@ -144,10 +142,11 @@ let redrawSavedFrames = () => {
   }
 };
 
-async function getText() {
+async function getText(language) {
   const request = await fetch("../text.json");
   const content = await request.json();
-  return content;
+  console.log(language)
+  return content.data[language];
 }
 
 function languageFromURL(url) {
