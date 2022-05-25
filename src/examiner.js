@@ -1,5 +1,6 @@
 const showAnswer = async function () {
   let answer = await pluginAPI.initialize();
+
   pluginAPI.examine(answer);
   pluginAPI.setHeight(100);
   document.getElementById("answerBox").style.background = answer
