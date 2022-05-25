@@ -219,7 +219,7 @@ body {
   width: 870px;
   border-radius: 2px;
   background-color: #ffffff;
-  background-image: url(/assets/newUI/bg.png);
+  background-image: url(./assets/newUI/bg.png);
   position: absolute;
   margin: 0 auto;
   bottom: 199px;
