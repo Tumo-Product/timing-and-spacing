@@ -146,7 +146,7 @@ let redrawSavedFrames = () => {
 };
 
 async function getText(language) {
-  const request = await fetch("../text.json");
+  const request = await fetch("./text.json");
   const content = await request.json();
   console.log(language)
   return content.data[language];
