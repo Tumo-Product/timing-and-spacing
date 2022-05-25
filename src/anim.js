@@ -13,9 +13,12 @@ let currentFrame = [];
 let frameStack = [];
 let showTrajectory = true;
 let language = languageFromURL(window.location.href);
+var content;
 
 window.onload = async function () {
   let getData = await getText(language)
+  content = getData
+
   pluginAPI.setHeight(600);
   document
     .getElementById("start")
