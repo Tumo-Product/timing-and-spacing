@@ -11,17 +11,10 @@ const pluginAPI = {
         }
         const { data } = event.data;
 
-        if (!data) {
+        if (data && data.answers) {
+          value = data.answers[0];
           resolve();
-          value = false;
           return;
-        }
-        if (data.message) {
-          resolve();
-          if (data.answers) {
-            value = data.answers[0];
-            return;
-          }
         }
         resolve();
         value = false;
