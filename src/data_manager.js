@@ -85,7 +85,7 @@ function showAnswer(content) {
   document.getElementById("infoButtonRowBg").style.background = "none";
 
   infoContextRow.style.background =
-    "url('/assets/newUI/bg.png') center center / 58%";
+    "url('./assets/newUI/bg.png') center center / 58%";
   infoContextRow.style.height = "288px";
   infoContextRow.style.flexDirection = "column";
 
@@ -103,7 +103,7 @@ function showAnswer(content) {
     saveBtnFrame.id = "saveBtnFrame";
     saveBtn.id = "saveBtn";
     saveBtn.setAttribute("onclick", "saveAnswerToBuffer()");
-    saveImg.src = "/assets/newUI/save.svg";
+    saveImg.src = "./assets/newUI/save.svg";
     saveBtn.appendChild(saveImg);
     saveBtnFrame.appendChild(saveBtn);
     infoContextRow.appendChild(saveBtnFrame);
@@ -147,7 +147,7 @@ function getAnswer() {
   document.getElementById("infoButtonRowBg").style.background = "none";
 
   infoContextRow.style.background =
-    "url('/assets/newUI/bg.png') center center / 58%";
+    "url('./assets/newUI/bg.png') center center / 58%";
   infoContextRow.style.height = "288px";
   infoContextRow.style.flexDirection = "column";
 
@@ -164,7 +164,7 @@ function getAnswer() {
   checkBtnFrame.id = "checkBtnFrame";
   checkBtn.id = "checkBtn";
   checkBtn.setAttribute("onclick", "drawAnswer()");
-  checkImg.src = "/assets/newUI/export.svg";
+  checkImg.src = "./assets/newUI/export.svg";
   checkBtn.appendChild(checkImg);
   checkBtnFrame.appendChild(checkBtn);
   infoContextRow.appendChild(checkBtnFrame);
