@@ -6,7 +6,9 @@ let UIManager = {
   exportButton: {},
   importButton: {},
   selectButton: {},
-  correctFrames: [1, 8, 13, 18, 22, 25, 27, 29, 48],
+  correctFrames: [
+    1, 2, 8, 12, 13, 14, 18, 21, 22, 23, 25, 27, 29, 43, 44, 45, 46, 47, 48,
+  ],
   selectedFrames: [],
   frameCount: 0,
   _lastState: true,
@@ -268,9 +270,10 @@ let UIManager = {
 };
 function answerCorrect(arr) {
   const sortedArray = arr.slice().sort((a, b) => a - b);
+  console.log(sortedArray.length);
   return (
-    sortedArray.length === UIManager.correctFrames.length &&
-    UIManager.correctFrames.every((val, index) => val === sortedArray[index])
+    sortedArray.length === 9 &&
+    sortedArray.every((e) => UIManager.correctFrames.includes(e))
   );
 }
 function shuffle(array) {
