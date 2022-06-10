@@ -4,27 +4,52 @@
       "start": "Start",
       "info": {
         "slide1": {
-          "gif": "assets/newUI/test.gif",
+          "gif": "assets/textAssets/gif2.gif",
           "cont": [
-            "For  precise selection,<img src='assets/newUI/frame.png'> the ball and move the frames <img src='assets/newUI/frame.png'> and <img src='assets/newUI/frame.png'>",
-            "To mark the keyframe, click on the <img src='assets/newUI/frame.png'> . If you make a mistake, just click on <img src='assets/newUI/frame.png'>to remove it.",
-            "Once you’re done, click <img src='assets/newUI/frame.png'>to copy your code."
+            "Find and then mark them with the help  <img src='assets/textAssets/delete.png'>/<img src='assets/textAssets/add.png'> buttons.",
+            "For precise selection, pause the ball and move the frames <img src='assets/textAssets/prev.png'> and <img src='assets/textAssets/next.png'>."
           ]
         },
         "slide2": {
-          "gif": "",
+          "gif": "assets/textAssets/gif1.gif",
           "cont": [
-            "For  precise selection,<img src='assets/newUI/frame.png'> the ball and move the frames <img src='assets/newUI/frame.png'> and <img src='assets/newUI/frame.png'>",
-            "To mark the keyframe, click on the <img src='assets/newUI/frame.png'> . If you make a mistake, just click on <img src='assets/newUI/frame.png'>to remove it.",
-            "Once you’re done, click <img src='assets/newUI/frame.png'>to copy your code."
+            "To mark the keyframe, click on the <img src='assets/textAssets/add.png'>.",
+            " If you make a mistake, just click on <img src='assets/textAssets/delete.png'> to remove it."
           ]
         },
         "slide3": {
-          "gif": "",
+          "gif": "assets/textAssets/gif3.gif",
           "cont": [
-            "For  precise selection, <img src='assets/newUI/frame.png'> the ball and move the frames <img src='assets/newUI/frame.png'> and <img src='assets/newUI/frame.png'>",
-            "To mark the keyframe, click on the <img src='assets/newUI/frame.png'> . If you make a mistake, just click on <img src='assets/newUI/frame.png'>to remove it.",
-            "Once you’re done, click <img src='assets/newUI/frame.png'>to copy your code."
+            "If by clicking on <img src='assets/textAssets/check.png'> the section for the timing becomes red,",
+            "then you have selected a wrong number of keyframes (more or less).",
+            " Revise your selections and try again. "
+          ]
+        }
+      }
+    },
+    "am": {
+      "start": "Սկիզբ",
+      "info": {
+        "slide1": {
+          "gif": "assets/textAssets/gif2.gif",
+          "cont": [
+            "Գտի՛ր ու նշիր հիմնակադրերը <img src='assets/textAssets/delete.png'>/<img src='assets/textAssets/add.png'> կոճակների միջոցով:",
+            "​Ճիշտ ընտրության համար կանգնեցրո՛ւ գնդակն ու կադրերը շարժիր <img src='assets/textAssets/prev.png'>  <img src='assets/textAssets/next.png'>:"
+          ]
+        },
+        "slide2": {
+          "gif": "assets/textAssets/gif1.gif",
+          "cont": [
+            "Հիմնակադրերը նշելու համար կտտացրու <img src='assets/textAssets/add.png'> նշանը: ",
+            "Եթե սխալ անես, պարզապես կտտացրու <img src='assets/textAssets/delete.png'>, որպեսզի չեղարկես:"
+          ]
+        },
+        "slide3": {
+          "gif": "assets/textAssets/gif3.gif",
+          "cont": [
+            "Եթե սեղմելիս ժամաչափի <img src='assets/textAssets/check.png'> հատվածը կարմրում է,",
+            " ապա դու նշել ես ավել կամ պակաս հիմնակադր(եր):",
+            "Վերանայիր նշումներդ ու նորից փորձիր:"
           ]
         }
       }
