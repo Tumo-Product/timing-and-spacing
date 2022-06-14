@@ -1,7 +1,7 @@
 /**
  * Created by admin on 11/28/2019.
  */
-document.addEventListener("contextmenu", (event) => event.preventDefault());
+
 let animationCanvas;
 let studentAnswersCanvas;
 let animationCanvasContent;
@@ -16,8 +16,8 @@ let language = languageFromURL(window.location.href);
 var content;
 
 window.onload = async function () {
-  let getData = await getText(language)
-  content = getData
+  let getData = await getText(language);
+  content = getData;
 
   pluginAPI.setHeight(600);
   document
