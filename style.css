@@ -3,7 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   cursor: url("./assets/newUI/cursor.svg"), auto;
-  user-select: none;
+  user-select: text;
 }
 
 body {
