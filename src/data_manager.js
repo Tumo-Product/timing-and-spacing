@@ -3,8 +3,6 @@
  */
 let importBtn = {};
 let exportBtn = {};
-var secondTime = false;
-var secondTimeKey = "";
 let initializeDataManager = () => {
   importBtn = document.getElementById("importBtn");
   exportBtn = document.getElementById("exportBtn");
@@ -26,32 +24,23 @@ let importBtnPressed = () => {
 
 let exportBtnPressed = () => {
   setAnimationState(false);
-  // We need second time variable to fix showing save popup for multiple times.
-  // Without this the popup will not appear more than one time.
-  // Todo: remove this variable and find a solution to fix the issue.
-  if (secondTime) {
-    showAnswer(secondTimeKey);
-  } else {
+  let row =  document.getElementById("row");
     if (answerCorrect(UIManager.selectedFrames)) {
       pluginAPI.setAnswers([true]);
-      let selectedList = shuffle(UIManager.selectedFrames);
+      let selectedList = UIManager.selectedFrames;
       let exportString = "";
       for (let i = 0; i < selectedList.length; i++) {
         exportString += selectedList[i];
         exportString += i === selectedList.length - 1 ? "" : ":";
       }
       let exportKey = Base64.encode(exportString);
-
       showAnswer(exportKey);
-
-      document.getElementById("row").style.backgroundColor = "#97D644";
-      secondTimeKey = exportKey;
-      secondTime = true;
+      row.style.backgroundColor = "#97D644";
     } else {
-      document.getElementById("row").style.bottom = 14 + "px";
-      document.getElementById("row").style.animation = "wrongToright 1.5s ";
+      row.style.bottom = 14 + "px";
+      row.style.animation = "wrongToright 1.5s ";
       setTimeout(function () {
-        document.getElementById("row").style.animation = "none";
+        row.style.animation = "none";
       }, 1500);
       document.getElementById("playBtn").style.display = "flex";
       document.getElementById("pauseBtn").style.display = "none";
@@ -63,7 +52,6 @@ let exportBtnPressed = () => {
       }, 800);
     }
   }
-};
 
 function showAnswer(content) {
   var infoContextRow = document.getElementById("infoContextRow");
@@ -73,6 +61,7 @@ function showAnswer(content) {
   var saveBtnFrame = document.createElement("div");
   var saveBtn = document.createElement("button");
   var saveImg = document.createElement("img");
+  
   document.getElementById("info").style.display = "flex";
   document.getElementById("prev").style.display = "none";
   document.getElementById("next").style.display = "none";
@@ -98,7 +87,7 @@ function showAnswer(content) {
   codeFrame.appendChild(code);
 
   if (content != "error") {
-    code.innerHTML = content;
+    code.innerHTML = shuffle(content);
     saveBtnFrame.classList.add("saveBtnFrame");
     saveBtnFrame.id = "saveBtnFrame";
     saveBtn.id = "saveBtn";
