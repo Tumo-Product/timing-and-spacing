@@ -158,20 +158,13 @@ function languageFromURL(url) {
 }
 //none || all
 function playAndPauseButtonsState(state) {
+  UIManager.buttonsEvents(state);
+  
   if (state == "all") {
-    document.getElementById("playBtn").style.pointerEvents = "all";
-    document.getElementById("nextBtn").style.pointerEvents = "all";
-    document.getElementById("prevBtn").style.pointerEvents = "all";
-    document.getElementById("infoBtn").style.pointerEvents = "all";
     document.getElementById("playBtn").classList.remove("_inactiveBtn");
     document.getElementById("infoBtn").classList.remove("_inactiveBtn");
     document.getElementById("prevBtn").classList.remove("_inactiveBtn");
     document.getElementById("nextBtn").classList.remove("_inactiveBtn");
-  } else if (state == "none") {
-    document.getElementById("playBtn").style.pointerEvents = "none";
-    document.getElementById("infoBtn").style.pointerEvents = "none";
-    document.getElementById("nextBtn").style.pointerEvents = "none";
-    document.getElementById("prevBtn").style.pointerEvents = "none";
   }
 }
 
