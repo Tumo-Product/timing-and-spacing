@@ -144,28 +144,14 @@ let UIManager = {
     document.getElementById("info").style.display = "flex";
     setAnimationState(false);
     UIManager.btnStateHelper();
-    document.getElementById("playBtn").style.pointerEvents = "none";
-    document.getElementById("infoBtn").style.pointerEvents = "none";
-    document.getElementById("nextBtn").style.pointerEvents = "none";
-    document.getElementById("prevBtn").style.pointerEvents = "none";
-    document.getElementById("importBtn").style.pointerEvents = "none";
-    document.getElementById("exportBtn").style.pointerEvents = "none";
-    document.getElementById("selectBtn").style.pointerEvents = "none";
-    document.getElementById("deselectBtn").style.pointerEvents = "none";
+    UIManager.buttonsEvents("none");
     UIManager.sliderView(content.info);
   },
   closeInfoWindow: function (state) {
     document.getElementById("info").style.display = "none";
     setAnimationState(true);
     UIManager.btnStateHelper();
-    document.getElementById("playBtn").style.pointerEvents = "all";
-    document.getElementById("infoBtn").style.pointerEvents = "all";
-    document.getElementById("nextBtn").style.pointerEvents = "all";
-    document.getElementById("prevBtn").style.pointerEvents = "all";
-    document.getElementById("importBtn").style.pointerEvents = "all";
-    document.getElementById("exportBtn").style.pointerEvents = "all";
-    document.getElementById("selectBtn").style.pointerEvents = "all";
-    document.getElementById("deselectBtn").style.pointerEvents = "all";
+    UIManager.buttonsEvents("all");
     if (
       typeof document.getElementById("saveBtnFrame") != "undefined" &&
       document.getElementById("saveBtnFrame") != null
@@ -185,10 +171,11 @@ let UIManager = {
   sliderView: function (content) {
     const indexRow = document.getElementById("sliderIndex");
     const slidesContentField = document.getElementById("slidesContentField");
+    const infoContextRow = document.getElementById("infoContextRow");
     slidesContentField.style.width = "auto";
-    document.getElementById("infoContextRow").style.background = "none";
-    document.getElementById("infoContextRow").style.height = "auto";
-    document.getElementById("infoContextRow").style.flexDirection = "row";
+    infoContextRow.style.background = "none";
+    infoContextRow.style.height = "auto";
+    infoContextRow.style.flexDirection = "row";
 
     document.getElementById("prev").style.display = "block";
     document.getElementById("next").style.display = "block";
@@ -267,6 +254,17 @@ let UIManager = {
       UIManager.sliderPrevButton.classList.remove("disabledSliderBtn");
     }
   },
+   buttonsEvents:function(state)
+{
+  document.getElementById("playBtn").style.pointerEvents = state;
+    document.getElementById("infoBtn").style.pointerEvents = state;
+    document.getElementById("nextBtn").style.pointerEvents = state;
+    document.getElementById("prevBtn").style.pointerEvents = state;
+    document.getElementById("importBtn").style.pointerEvents = state;
+    document.getElementById("exportBtn").style.pointerEvents = state;
+    document.getElementById("selectBtn").style.pointerEvents = state;
+    document.getElementById("deselectBtn").style.pointerEvents = state;
+}
 };
 function answerCorrect(arr) {
   const sortedArray = arr.slice().sort((a, b) => a - b);
@@ -286,3 +284,4 @@ function shuffle(array) {
   }
   return copy;
 }
+
