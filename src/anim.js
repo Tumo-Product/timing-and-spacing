@@ -144,7 +144,7 @@ let redrawSavedFrames = () => {
     );
   }
 };
-
+// TODO: PluginAPI allows us to get data about language. Remove url query and use data from PluginAPI to dectect the language
 async function getText(language) {
   const request = await fetch("./text.json");
   const content = await request.json();
