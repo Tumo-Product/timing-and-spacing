@@ -28,11 +28,13 @@ let exportBtnPressed = () => {
   setAnimationState(false);
   // We need second time variable to fix showing save popup for multiple times.
   // Without this the popup will not appear more than one time.
+  //In future export button will be removed as soon as plugins will be autochecked. Remove this and importBtnPressed functions when pluggin will support autochecking. 
   // Todo: remove this variable and find a solution to fix the issue.
   if (secondTime) {
     showAnswer(secondTimeKey);
   } else {
     if (answerCorrect(UIManager.selectedFrames)) {
+      //TODO: Check tool setAnswers function. In some cases it is pressing answer or reject button in activity manager in some cases not. Find the answer and solution.
       pluginAPI.setAnswers([true]);
       let selectedList = shuffle(UIManager.selectedFrames);
       let exportString = "";
