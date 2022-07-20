@@ -3,8 +3,6 @@
  */
 let importBtn = {};
 let exportBtn = {};
-var secondTime = false;
-var secondTimeKey = "";
 let initializeDataManager = () => {
   importBtn = document.getElementById("importBtn");
   exportBtn = document.getElementById("exportBtn");
@@ -26,28 +24,24 @@ let importBtnPressed = () => {
 
 let exportBtnPressed = () => {
   setAnimationState(false);
-  // We need second time variable to fix showing save popup for multiple times.
-  // Without this the popup will not appear more than one time.
-  // Todo: remove this variable and find a solution to fix the issue.
-  if (secondTime) {
-    showAnswer(secondTimeKey);
-  } else {
     if (answerCorrect(UIManager.selectedFrames)) {
       pluginAPI.setAnswers([true]);
-      let selectedList = shuffle(UIManager.selectedFrames);
+      let selectedList = UIManager.selectedFrames;
       let exportString = "";
       for (let i = 0; i < selectedList.length; i++) {
         exportString += selectedList[i];
         exportString += i === selectedList.length - 1 ? "" : ":";
       }
+      const salt = new Date();
+      exportString =
+        salt.getSeconds() + "#" + exportString + "#" + salt.getSeconds();
       let exportKey = Base64.encode(exportString);
-
       showAnswer(exportKey);
-
+  
       document.getElementById("row").style.backgroundColor = "#97D644";
       secondTimeKey = exportKey;
       secondTime = true;
-    } else {
+    }  else {
       document.getElementById("row").style.bottom = 14 + "px";
       document.getElementById("row").style.animation = "wrongToright 1.5s ";
       setTimeout(function () {
@@ -62,7 +56,6 @@ let exportBtnPressed = () => {
         setAnimationState(true);
       }, 800);
     }
-  }
 };
 
 function showAnswer(content) {
@@ -176,7 +169,7 @@ function drawAnswer() {
   let importKey = document.getElementById("inputText").value;
   try {
     importKey = Base64.decode(importKey);
-    let strArray = importKey.split(":");
+    let strArray = importKey.split("#")[1].split(":");
     let numArray = [];
     for (let i = 0; i < strArray.length; i++) {
       numArray.push(parseInt(strArray[i]));

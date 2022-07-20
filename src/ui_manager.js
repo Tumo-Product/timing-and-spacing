@@ -268,20 +268,8 @@ let UIManager = {
 };
 function answerCorrect(arr) {
   const sortedArray = arr.slice().sort((a, b) => a - b);
-  console.log(sortedArray.length);
   return (
     sortedArray.length === 9 &&
     sortedArray.every((e) => UIManager.correctFrames.includes(e))
   );
 }
-function shuffle(array) {
-  var copy = [],
-    n = array.length,
-    i;
-  while (n) {
-    i = Math.floor(Math.random() * n--);
-    copy.push(array.splice(i, 1)[0]);
-  }
-  return copy;
-}
-
