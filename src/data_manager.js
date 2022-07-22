@@ -50,6 +50,7 @@ let exportBtnPressed = () => {
       secondTimeKey = exportKey;
       secondTime = true;
     } else {
+      pluginAPI.setAnswers([false]);
       document.getElementById("row").style.bottom = 14 + "px";
       document.getElementById("row").style.animation = "wrongToright 1.5s ";
       setTimeout(function () {
