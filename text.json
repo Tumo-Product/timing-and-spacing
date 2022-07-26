@@ -53,6 +53,34 @@
           ]
         }
       }
+    },
+    "fr":{
+      "start": "Démarrer",
+      "info": {
+        "slide1": {
+          "gif": "assets/textAssets/gif2.gif",
+          "cont": [
+            "Pourrais-tu retrouver toutes les images clés dans cette animation d'une balle qui rebondit ?",
+            "Trouve-les puis marque-les à l'aide des boutons lecture, pause et cadre <img src='assets/textAssets/prev.png'>/<img src='assets/textAssets/next.png'>.",
+            "Pour une sélection précise, mets sur pause et déplace les cadres vers l'avant et vers l'arrière."
+          ]
+        },
+        "slide2": {
+          "gif": "assets/textAssets/gif1.gif",
+          "cont": [
+            "Pour marquer l'image clé, clique sur <img src='assets/textAssets/add.png'>.",
+            "Si jamais tu te trompes, clique juste sur <img src='assets/textAssets/delete.png'> pour l'effacer."
+          ]
+        },
+        "slide3": {
+          "gif": "assets/textAssets/gif3.gif",
+          "cont": [
+            "Si tu cliques sur <img src='assets/textAssets/check.png'> et tu vois que la section concernant le timing devient rouge,",
+            "ela signifie que le nombre d'images clés est mal choisi (plus ou moins).",
+            "Modifie ta sélection et réessaie. "
+          ]
+        }
+      }
     }
   }
 }
