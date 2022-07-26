@@ -1,8 +1,7 @@
 const pluginAPI = {
   initialize: async () => {
     postMessage("init");
-    let value = false;
-
+    const initData = {language:undefined, answer_state:false};
     await new Promise((resolve) => {
       window.addEventListener("message", async (event) => {
         if (event.data.application !== "activity-manager") {
@@ -12,15 +11,17 @@ const pluginAPI = {
         const { data } = event.data;
 
         if (data && data.answers) {
-          value = data.answers[0];
+          initData.language = data.language;
+          initData.answer_state = data.answers[0];
           resolve();
           return;
         }
+        initData.answer_state = false;
         resolve();
-        value = false;
+        
       });
     });
-    return value;
+    return initData;
   },
   setHeight: async (height) => {
     postMessage("set-iframe-height", { iframeHeight: height });

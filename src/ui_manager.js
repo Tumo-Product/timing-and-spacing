@@ -270,7 +270,6 @@ let UIManager = {
 };
 function answerCorrect(arr) {
   const sortedArray = arr.slice().sort((a, b) => a - b);
-  console.log(sortedArray.length);
   return (
     sortedArray.length === 9 &&
     sortedArray.every((e) => UIManager.correctFrames.includes(e))

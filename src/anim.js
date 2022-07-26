@@ -12,13 +12,12 @@ let maxFr = 0;
 let currentFrame = [];
 let frameStack = [];
 let showTrajectory = true;
-let language = languageFromURL(window.location.href);
-var content;
+let content;
 
 window.onload = async function () {
+  const language = (await pluginAPI.initialize()).language || "en";
   let getData = await getText(language);
-  content = getData;
-
+  content = await getText(language);
   pluginAPI.setHeight(600);
   document
     .getElementById("start")
@@ -144,18 +143,13 @@ let redrawSavedFrames = () => {
     );
   }
 };
-// TODO: PluginAPI allows us to get data about language. Remove url query and use data from PluginAPI to dectect the language
+
 async function getText(language) {
   const request = await fetch("./text.json");
   const content = await request.json();
   return content.data[language];
 }
 
-function languageFromURL(url) {
-  let query = url.split("?")[1];
-  if (query === url || query === "") return;
-  return query.split("=")[1];
-}
 //none || all
 function playAndPauseButtonsState(state) {
   if (state == "all") {
